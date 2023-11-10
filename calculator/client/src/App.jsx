@@ -25,6 +25,9 @@ import Add from "./components/operators/Add";
 import Subtract from "./components/operators/Subtract";
 import Multiply from "./components/operators/Multiply";
 import Divide from "./components/operators/Divide";
+import MC from "./components/functionality/MC";
+import MS from "./components/functionality/MS";
+import MR from "./components/functionality/MR";
 function App() {
   // https://wallpapers.com/wallpapers/black-and-white-math-board-zb383dm6tubx3bk2.html
   // https://www.cuemath.com/algebra/equation/
@@ -36,7 +39,8 @@ function App() {
   // }
 
   let inputArray = [];
-  let workingMemory = {};
+  let workingMemory = [];
+  let commandQueue = []
   const acceptInput = (input) => {
     inputArray.push(input);
     console.log(inputArray);
@@ -64,8 +68,22 @@ function App() {
       <div className="Border">
         <Display
         inputArray = {inputArray}
-        ></Display>
+        >{inputArray[0]}</Display>
         <Container id="face">
+        <Row>
+            <Col>
+              <MC />
+            </Col>
+            <Col>
+              <MR />
+            </Col>
+            <Col>
+              <MS />
+            </Col>
+            <Col>
+              <Backspace inputArray={inputArray} />
+            </Col>
+          </Row>
           {/* Percent, CE, C, BKSP */}
           <Row>
             <Col>
@@ -78,7 +96,7 @@ function App() {
               <Clear clearInputArray={clearInputArray} />
             </Col>
             <Col>
-              <Backspace inputArray={inputArray} />
+              <Divide inputArray={inputArray} />
             </Col>
           </Row>
           {/* 7, 8, 9 */}
@@ -126,6 +144,7 @@ function App() {
               <Add
                 additionFunction={additionFunction}
                 inputArray={inputArray}
+                commandQueue = {commandQueue}
               ></Add>
             </Col>
           </Row>
