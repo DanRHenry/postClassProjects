@@ -1,6 +1,6 @@
 import React from "react";
 // import { useRef } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Table, Container } from "reactstrap";
 import AddFoodItem from "./AddFoodItem";
 import { Button } from "reactstrap";
@@ -9,7 +9,8 @@ import { Button } from "reactstrap";
 // import { useParams, useNavigate } from "react-router-dom";
 
 export default function FoodList(props) {
-  let tempColorValue = "greyRow";
+  // let tempColorValue = "greyRow";
+  let tempColorValue = useRef("greyRow");
   let currentCalories = 0;
   const [foodData, setFoodData] = useState();
   //   let [day, setDay] = useState(props.day)

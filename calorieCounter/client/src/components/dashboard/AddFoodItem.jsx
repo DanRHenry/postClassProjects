@@ -1,5 +1,5 @@
 //!https://surveyjs.io/form-library/examples/create-dropdown-menu-in-javascript/reactjs#
-import { React, useRef, useState } from "react";
+import { React, useRef } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 
 export default function AddFoodItem(props) {
@@ -22,7 +22,7 @@ export default function AddFoodItem(props) {
   }
   //  --------------------- POST ----------------
   async function handleSubmit(e) {
-    if (foodNameRef.current.value != "") {
+    if (foodNameRef.current.value !== "") {
       //* Stop the page from refreshing when the form submits
       e.preventDefault();
 

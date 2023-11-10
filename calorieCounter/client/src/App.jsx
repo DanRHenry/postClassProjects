@@ -6,12 +6,12 @@ import GatherInfo from "./components/auth/register/GatherInfo";
 import Dashboard from "./components/dashboard/Dashboard";
 
 function App() {
-  const [sessionToken, setSessionToken] = useState("Sample Token");
+  // const [sessionToken, setSessionToken] = useState("Sample Token");
   const updateToken = (newToken) => {
     console.log("newToken:", newToken);
     localStorage.setItem("token", newToken);
     // ^ .setItem(key, value)
-    setSessionToken(newToken);
+    // setSessionToken(newToken);
   };
 
   return (

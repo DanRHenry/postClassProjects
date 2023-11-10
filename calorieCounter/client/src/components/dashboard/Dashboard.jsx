@@ -3,10 +3,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 // import { useRef } from "react";
 import FoodList from "./FoodList";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import FoodHeaders from "./FoodHeaders";
 export default function Dashboard() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [information, setInformation] = useState({});
   // const [enterFoodState, setEnterFoodState] = useState(false);
