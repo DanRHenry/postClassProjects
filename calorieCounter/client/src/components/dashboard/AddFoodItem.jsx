@@ -1,4 +1,5 @@
-import {React, useRef, useState} from "react";
+//!https://surveyjs.io/form-library/examples/create-dropdown-menu-in-javascript/reactjs#
+import { React, useRef, useState } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 
 export default function AddFoodItem(props) {
@@ -12,108 +13,108 @@ export default function AddFoodItem(props) {
   const [formInputFields, setFormInputFields] = useState();
   const userEmail = props.information.email;
 
-  let day = props.day;
-  if (props.day < 10) {
-    day = `0${props.day}`
-  }
+  let day;
 
+  if (props.day < 10) {
+    day = `0${props.day.toString()}`;
+  } else {
+    day = props.day;
+  }
   //  --------------------- POST ----------------
   async function handleSubmit(e) {
-    //* Stop the page from refreshing when the form submits
-    e.preventDefault();
+    if (foodNameRef.current.value != "") {
+      //* Stop the page from refreshing when the form submits
+      e.preventDefault();
 
-    //* Creating a variable that holds each input's ref value
-    const creatorName = userEmail;
-    const date = (props.year.toString() + props.month.toString() + day);
-    // const creatorName = creatorNameRef.current.value;
+      //* Creating a variable that holds each input's ref value
+      const creatorName = userEmail;
 
-    const foodName = foodNameRef.current.value;
-    const mealCategory = "mealCategoryRef.current.value";
-    const unit = unitRef.current.value;
-    const quantity = quantityRef.current.value;
-    const calories = caloriesRef.current.value;
-    const mealType = "mealTypeRef.current.value";
+      const date = props.year.toString() + props.month.toString() + day;
+      // const creatorName = creatorNameRef.current.value;
 
-    // setFormInputFields(
-      
+      const foodName = foodNameRef.current.value;
+      const mealCategory = "mealCategoryRef.current.value"; //IE Breakfast, lunch, dinner, snack
+      const unit = unitRef.current.value;
+      const quantity = quantityRef.current.value;
+      const calories = caloriesRef.current.value;
+      const mealType = "mealTypeRef.current.value"; // ie: Protein, sugary snack, etc.
 
-    // )
-    //* The server expects json, we need to build and json-ify a user object to send to our server
-    let newFoodObj = JSON.stringify({
-      creatorName,
-      date,
-      foodName,
-      mealCategory,
-      unit,
-      quantity,
-      calories,
-      mealType,
-    });
+      // setFormInputFields(
 
-    const url = "http://localhost:4300/food/storeFood";
+      // )
+      //* The server expects json, we need to build and json-ify a user object to send to our server
+      let newFoodObj = JSON.stringify({
+        creatorName,
+        date,
+        foodName,
+        mealCategory,
+        unit,
+        quantity,
+        calories,
+        mealType,
+      });
 
-    const headers = new Headers();
+      const url = "http://localhost:4300/food/storeFood";
 
-    headers.append("Content-Type", "application/json");
+      const headers = new Headers();
 
-    const requestOptions = {
-      headers,
-      body: newFoodObj,
-      method: "POST",
-    };
+      headers.append("Content-Type", "application/json");
 
-    // Use try/catch for our async fetch
-    try {
-      // Build an async fetch, fetch will use the url and requestOptions obj
-      const response = await fetch(url, requestOptions);
-      const data = await response.json();
-      //   console.log("data:", data);
+      const requestOptions = {
+        headers,
+        body: newFoodObj,
+        method: "POST",
+      };
 
-      // If the server send a success message we can proceed
+      // Use try/catch for our async fetch
+      try {
+        // Build an async fetch, fetch will use the url and requestOptions obj
+        const response = await fetch(url, requestOptions);
+        const data = await response.json();
+        //   console.log("data:", data);
 
-      if (data.message === "Success! Food Saved!") {
-        // props.setFoodData();
-        props.getFoodInformation();
-        newFoodObj = {}
-        // creatorNameRef.current.value = "";
-        // const creatorName = userEmail.toString();
-        foodNameRef.current.value = "";
-        mealCategoryRef.current.value = "";
-        unitRef.current.value = "";
-        quantityRef.current.value = 0;
-        caloriesRef.current.value = 0;
-        mealTypeRef.current.value = "";
+        // If the server send a success message we can proceed
+
+        if (data.message === "Success! Food Saved!") {
+          // props.setFoodData();
+          props.getFoodInformation();
+          newFoodObj = {};
+          const form = document.querySelector("form")
+          form.reset()
+
+        }
+      } catch (err) {
+        console.error(err.message);
       }
-    } catch (err) {
-      console.error(err.message);
     }
   }
-
   return (
     <div id="inputFormsAndButton">
       <Form onSubmit={handleSubmit}>
-        <FormGroup
-        className="inputFields"
-        >
+        <FormGroup className="inputFields">
           <Input
-            placeholder="Food Name"
+            name="Food"
+            placeholder="Food"
             innerRef={foodNameRef}
             type="text"
             autoComplete="off"
           />
           <Input
+            name="Amount"
+            placeholder="Amount"
+            innerRef={quantityRef}
+            type="number"
+            autoComplete="off"
+          />
+          <Input
+            name="Unit"
             placeholder="Unit"
             innerRef={unitRef}
             type="text"
             autoComplete="off"
           />
           <Input
-            placeholder="Quantity"
-            innerRef={quantityRef}
-            type="number"
-            autoComplete="off"
-          />
-          <Input
+            name="Calories"
             placeholder="Calories"
             innerRef={caloriesRef}
             type="number"
@@ -121,7 +122,9 @@ export default function AddFoodItem(props) {
           />
         </FormGroup>
       </Form>
-      <Button id="submit" onClick={handleSubmit}>Submit</Button>
+      <Button id="submit" onClick={handleSubmit}>
+        Submit
+      </Button>
     </div>
   );
 }

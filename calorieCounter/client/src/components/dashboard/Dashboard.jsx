@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import { useRef } from "react";
 import FoodList from "./FoodList";
 import { useNavigate } from "react-router-dom";
-
+import FoodHeaders from "./FoodHeaders";
 export default function Dashboard() {
   const navigate = useNavigate();
 
   const [information, setInformation] = useState({});
   const [enterFoodState, setEnterFoodState] = useState(false);
-
+  const [dailyCalories, setDailyCalories] = useState(0);
   const userData = {};
 
   const token = localStorage.getItem("token");
@@ -69,52 +69,23 @@ export default function Dashboard() {
     colorAssignment = 0;
   }
 
-
-
-return(
-  <>
-  <Container>
-    <Row className="row">
-      <Col m="auto" className="bg-light border">
-        Date: {`${month}/${day}/${year}`}
-      </Col>
-      <Col m="auto" className="bg-light border">
-        Weight: {`${information?.weight}`}
-      </Col>
-      <Col m="auto" className="bg-light border">
-        Maintain: {`${information?.maintain}`}
-      </Col>
-      <Col m="auto" className="bg-light border">
-        Lose 1 lb/week: {`${information?.maintain - 500}`}
-      </Col>
-      <Col m="auto" className="bg-light border">
-        Lose 2 lbs/week: {`${information?.maintain - 1000}`}
-      </Col>
-      <Col m="auto" className="bg-light border">
-        Total Calories:
-      </Col>
-    </Row>
-    <Row>
-      <tr
-      // key={props.filteredTransactions.indexOf(transaction)}
-      >
-        <td className={tempColor}>food items here</td>
-      </tr>
-    </Row>
-  </Container>
-  <Container>
-
-
-    <FoodList 
-    information = {information}
-    day = {date.getDate()}
-    month = {date.getMonth() + 1}
-    year = {date.getFullYear()}
-    />
-  </Container>
-  <Button className="bg-dark" onClick={setEnterFoodState}>
-    Click
-  </Button>
-</>
-  )
+  return (
+    <>
+      <FoodHeaders
+      month = {month}
+      day = {day}
+      year = {year}
+      information = {information}
+      dailyCalories = {dailyCalories}
+      />
+            <FoodList
+              information={information}
+              day={date.getDate()}
+              month={date.getMonth() + 1}
+              year={date.getFullYear()}
+              setDailyCalories={setDailyCalories}
+              dailyCalories={dailyCalories}
+            />
+    </>
+  );
 }

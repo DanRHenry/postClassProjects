@@ -1,22 +1,25 @@
 import React from "react";
 import { useRef } from "react";
 import { useEffect, useState } from "react";
-import { Table } from "reactstrap";
+import { Table, Container } from "reactstrap";
 import AddFoodItem from "./AddFoodItem";
-import {Button} from "reactstrap";
+import { Button } from "reactstrap";
+import { createRoutesFromElements } from "react-router-dom";
 
 // import { useParams, useNavigate } from "react-router-dom";
 
 export default function FoodList(props) {
   let tempColorValue = "greyRow";
-  
-  
+  let currentCalories = 0;
   const [foodData, setFoodData] = useState();
-//   let [day, setDay] = useState(props.day)
-let day = props.day;
-  
-  //   const id = useParams();
-
+  //   let [day, setDay] = useState(props.day)
+  const userEmail = props.information.email;
+  const thisDay = props.day;
+  const thisMonth = props.month;
+  const thisYear = props.year;
+  const [currentDay, setDay] = useState(thisDay);
+  const [currentMonth, setMonth] = useState(thisMonth);
+  const [currentYear, setYear] = useState(thisYear);
   //   --------------------- GET -----------------
 
   let getFoodInformation = async function () {
@@ -46,15 +49,32 @@ let day = props.day;
 
   useEffect(() => {
     getFoodInformation();
+    displayFoodItems();
   }, []);
-  
+
+  useEffect(() => {
+    // if (currentCalories != currentCalories) {
+      props.setDailyCalories(currentCalories);
+    // }
+  });
   let displayFoodItems = () =>
+    // currentCalories = 0;
     foodData?.map((item) => {
-        if (day < 10) {
-            // setDay(`0${props.day}`);
-            day = `0${props.day}`;
-          }
-      if (item.date === props.year.toString() + props.month.toString() + day) {
+      let dayToGrab = currentDay;
+      if (dayToGrab < 10) {
+        dayToGrab = `0${currentDay.toString()}`;
+      } else {
+        dayToGrab = currentDay.toString();
+      }
+      //! potentially move this to the back end to reduce future bandwidth
+
+      if (
+        item.date ===
+          currentYear.toString() +
+            currentMonth.toString() +
+            dayToGrab.toString() &&
+        userEmail === item.creatorName
+      ) {
         let foodName = item.foodName;
         let mealCategory = item.mealCategory;
         let unit = item.unit;
@@ -62,6 +82,7 @@ let day = props.day;
         let calories = item.calories;
         let mealType = item.mealType;
         let totalCalories = quantity * calories;
+        currentCalories += totalCalories;
         return (
           <tr key={foodData.indexOf(item)}>
             <td>{foodName}</td>
@@ -74,46 +95,90 @@ let day = props.day;
       }
     });
 
-    const calendar = {
-        1: 31,
-        2: 28,
-        3: 31,
-        4: 30,
-        5: 31,
-        6: 30,
-        7: 31,
-        8: 31,
-        9: 30,
-        10: 31,
-        11: 30,
-        12: 31
-    }
-    let year = 2004
-    console.log(2002 % 4)
-    let prevDay = () => {
-        if (day > 0) {
-            day = props.day -1;
+  const calendar = {
+    1: 31,
+    2: 28,
+    3: 31,
+    4: 30,
+    5: 31,
+    6: 30,
+    7: 31,
+    8: 31,
+    9: 30,
+    10: 31,
+    11: 30,
+    12: 31,
+    leapMonth: 29,
+  };
+
+  let prevDay = () => {
+    if (currentDay > 1) {
+      //* If the day of the month is not the 1st...
+      setDay(currentDay - 1); //* Subtract a day
+    } else {
+      //* If the day of the month IS the 1st...
+      if (currentMonth > 1); //* If the current month is not January...
+      {
+        if (currentYear % 4 === 0 && currentMonth === 3) {
+          //* If it IS a leap year, and it was March...
+          setMonth(currentMonth - 1);
+          setDay(calendar["leapMonth"]);
         } else {
-            if (props.month > 0);
-            {
-                const month = props.month -1;    
-                if (props.year % 4 != 0) {
-                    day = calendar.month-1;
-                } else {
-                    if (month +1 === 2) {
-                        day = (calendar.month +1);
-                    }
-                }
-            }
-            
-            console.log(day)
+          //* If it's not a leap year...
+          setMonth(currentMonth - 1);
+          let tempMonth = (currentMonth - 1).toString();
+          setDay(calendar[`${tempMonth}`]);
         }
+        if (currentMonth === 1) {
+          //* If it IS January
+          setYear(currentYear - 1); //* Subtract a year
+          setMonth(12); //* Set the month to December
+          setDay(calendar[`${currentMonth}`]); //* Set the day to the end of december
+        }
+        getFoodInformation();
+      }
     }
-    const nextDay = () => {
-        getFoodInformation()
+  };
+
+  let nextDay = () => {
+    //* If it is December, and the day is the last of the month...
+    if (currentMonth === 12 && currentDay === calendar[`${currentMonth}`]) {
+      setYear(currentYear + 1); //* Add a year
+      setMonth(1); //* Set the month to January
+      setDay(1); //* Set the day to the start of January
     }
+    //* If the current month is not December...
+    else if (currentMonth < 12);
+    {
+      //* If it IS a leap year, and it is February...
+      if (currentYear % 4 === 0 && currentMonth === 2) {
+        //* If the day is not the last of the leap month...
+        if (currentDay < 29) {
+          setDay(currentDay + 1);
+        }
+        //* If the day is the last of the leap month...
+        else {
+          setDay(1);
+          setMonth(currentMonth + 1);
+        }
+      }
+      //* If it is not December, and the current day is the last of the month...
+      else if (
+        currentDay === calendar[`${currentMonth}`] &&
+        currentMonth !== 12
+      ) {
+        setDay(1);
+        setMonth(currentMonth + 1);
+      } else if (currentDay < calendar[`${currentMonth}`]) {
+        setDay(currentDay + 1);
+      }
+    }
+    getFoodInformation();
+  };
+
   return (
     <>
+    <Container>
       <AddFoodItem
         information={props.information}
         day={props.day}
@@ -121,11 +186,22 @@ let day = props.day;
         year={props.year}
         setFoodData={setFoodData}
         getFoodInformation={getFoodInformation}
+        setDailyCalories={props.setDailyCalories}
+        dailyCalories={props.dailyCalories}
       />
-      <Button onClick={prevDay}>Prev</Button>
-      <Button onClick={nextDay}>Next</Button>
-      <Table>
-        <thead>
+      <div>
+        {currentMonth}/{currentDay}/{currentYear}
+      </div>
+      <div id="buttons">
+        <Button className="button" onClick={prevDay}>
+          Prev
+        </Button>
+        <Button className="button" onClick={nextDay}>
+          Next
+        </Button>
+      </div>
+      <Table striped>
+        <thead id="tableHeader">
           <tr>
             <th>Food Name</th>
             <th>Quantity</th>
@@ -133,9 +209,11 @@ let day = props.day;
             <th>Calories Per</th>
             <th>Total Calories</th>
           </tr>
-          <>{displayFoodItems()}</>
         </thead>
+
+        <tbody id="tableBody">{displayFoodItems()}</tbody>
       </Table>
+      </Container>
     </>
   );
 }
