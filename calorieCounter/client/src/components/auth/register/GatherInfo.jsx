@@ -4,7 +4,6 @@ import { Form, FormGroup, Input, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 
 export default function GatherInfo(props) {
-  const token = localStorage.getItem("token");;
   const navigate = useNavigate();
   const firstNameRef = useRef();
   const lastNameRef = useRef();

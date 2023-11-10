@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Form, FormGroup, Input, Label, Button } from "reactstrap";
+import { Form, FormGroup, Input, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 export default function Login({ updateToken }) {
   // This could also have been written: props.updateToken

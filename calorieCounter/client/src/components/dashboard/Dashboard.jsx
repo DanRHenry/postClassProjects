@@ -1,7 +1,7 @@
 import React from "react";
-import { Col, Container, Row, Button, Form, Table } from "reactstrap";
+// import { Col, Container, Row, Button, Form, Table } from "reactstrap";
 import { useState, useEffect } from "react";
-import { useRef } from "react";
+// import { useRef } from "react";
 import FoodList from "./FoodList";
 import { useNavigate } from "react-router-dom";
 import FoodHeaders from "./FoodHeaders";
@@ -9,7 +9,7 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   const [information, setInformation] = useState({});
-  const [enterFoodState, setEnterFoodState] = useState(false);
+  // const [enterFoodState, setEnterFoodState] = useState(false);
   const [dailyCalories, setDailyCalories] = useState(0);
   const userData = {};
 

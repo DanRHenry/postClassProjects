@@ -1,10 +1,10 @@
 import React from "react";
-import { useRef } from "react";
+// import { useRef } from "react";
 import { useEffect, useState } from "react";
 import { Table, Container } from "reactstrap";
 import AddFoodItem from "./AddFoodItem";
 import { Button } from "reactstrap";
-import { createRoutesFromElements } from "react-router-dom";
+// import { createRoutesFromElements } from "react-router-dom";
 
 // import { useParams, useNavigate } from "react-router-dom";
 
@@ -76,11 +76,11 @@ export default function FoodList(props) {
         userEmail === item.creatorName
       ) {
         let foodName = item.foodName;
-        let mealCategory = item.mealCategory;
+        // let mealCategory = item.mealCategory;
         let unit = item.unit;
         let quantity = item.quantity;
         let calories = item.calories;
-        let mealType = item.mealType;
+        // let mealType = item.mealType;
         let totalCalories = quantity * calories;
         currentCalories += totalCalories;
         return (

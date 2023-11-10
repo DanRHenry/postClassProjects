@@ -3,14 +3,14 @@ import { React, useRef, useState } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 
 export default function AddFoodItem(props) {
-  const creatorNameRef = "";
+  // const creatorNameRef = "";
   const foodNameRef = useRef();
-  const mealCategoryRef = useRef();
+  // const mealCategoryRef = useRef();
   const unitRef = useRef();
   const quantityRef = useRef();
   const caloriesRef = useRef();
-  const mealTypeRef = useRef();
-  const [formInputFields, setFormInputFields] = useState();
+  // const mealTypeRef = useRef();
+  // const [formInputFields, setFormInputFields] = useState();
   const userEmail = props.information.email;
 
   let day;
