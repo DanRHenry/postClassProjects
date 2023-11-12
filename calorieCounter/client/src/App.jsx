@@ -1,5 +1,11 @@
+// freecodecamp has this file as App.js
+// code from freecodecamp
+import React from "react";
+
+//import axios from 'axios'; -- Deal with this later?
+
 import "./App.css";
-import { useState } from "react";
+// import { useState } from "react";
 import Auth from "./components/auth/Auth";
 import { Routes, Route } from "react-router-dom";
 import GatherInfo from "./components/auth/register/GatherInfo";

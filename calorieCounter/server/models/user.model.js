@@ -41,3 +41,6 @@ const UserSchema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model("User", UserSchema);
+
+// Change added from "https://www.freecodecamp.org/news/deploying-a-mern-application-using-mongodb-atlas-to-heroku"
+// module.exports = mongoose.model("User", UserSchema, "users");

@@ -36,3 +36,6 @@ const FoodSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Food", FoodSchema);
+
+// Change added from "https://www.freecodecamp.org/news/deploying-a-mern-application-using-mongodb-atlas-to-heroku"
+// module.exports = mongoose.model("Food", FoodSchema, "foods");

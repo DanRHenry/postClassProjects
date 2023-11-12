@@ -1,3 +1,17 @@
+// Added from: https://www.freecodecamp.org/news/deploying-a-mern-application-using-mongodb-atlas-to-heroku
+
+// In freecodecamp instructions, this file is named "server.js"
+// const bodyParser = require("body-parser");
+// constpath = require("path");
+// require("./database");
+// app.use(bodyParser.json());
+// app.use(express.static(path.join(__dirname, "../client/build")));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../client/build"));
+// });
+
+//--------------------- End Addition from freecodecamp Section ------------------------
+
 require("dotenv").config();
 const express = require("express");
 const app = express();
@@ -8,11 +22,10 @@ const log = console.log;
 
 // ---------------------- Controllers: -------------------
 const user = require("./controllers/user.controller");
-const food = require("./controllers/food.controller")
+const food = require("./controllers/food.controller");
 
 // Adding cors() to handle the preflight request for us (something Postman did for us), this is part of our server middleware required and called in the app.js
-const cors = require('cors');
-
+const cors = require("cors");
 
 // Require in the mongoose middleware, pulled/used from node_modules
 const mongoose = require("mongoose");

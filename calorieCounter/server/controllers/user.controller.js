@@ -1,3 +1,5 @@
+// freecodecamp has this as /api/users.js
+
 const router = require("express").Router();
 const User = require("../models/user.model");
 const requireValidation = require("../middleware/validate-session");
