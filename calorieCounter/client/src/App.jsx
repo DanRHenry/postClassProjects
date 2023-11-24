@@ -14,7 +14,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 function App() {
   // const [sessionToken, setSessionToken] = useState("Sample Token");
   const updateToken = (newToken) => {
-    console.log("newToken:", newToken);
+    // console.log("newToken:", newToken);
     localStorage.setItem("token", newToken);
     // ^ .setItem(key, value)
     // setSessionToken(newToken);

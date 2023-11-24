@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
-
+import { baseurl } from "../../../helpers/url";
 export default function Register(props) {
   const updateToken = props.updateToken;
   const emailRef = useRef();
@@ -34,7 +34,7 @@ export default function Register(props) {
       age,
     });
 
-    const url = "http://localhost:4300/user/signup";
+    const url = baseurl+"/user/signup";
 
     const headers = new Headers();
 
@@ -51,15 +51,15 @@ export default function Register(props) {
       // Build an async fetch, fetch will use the url and requestOptions obj
       const response = await fetch(url, requestOptions);
       const data = await response.json();
-      console.log('data:',data)
-
+      console.log("data:",data)
       // If the server send a success message we can proceed
       if (data.message === "Success! User Created!") {
         updateToken(data.token);
         navigate("/GatherInfo");
       } else {
-        console.log("message: ",data.message)
-        alert(data.message);
+        // console.log("message: ",data.message)
+        // console.log(data.message);
+        // alert(data.message);
       }
     } catch (err) {
       console.error(err.message);

@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import FoodList from "./FoodList";
 // import { useNavigate } from "react-router-dom";
 import FoodHeaders from "./FoodHeaders";
+import { baseurl } from "../../helpers/url";
 export default function Dashboard() {
   // const navigate = useNavigate();
 
@@ -18,7 +19,7 @@ export default function Dashboard() {
   let tempColor;
 
   const getUserInformation = async () => {
-    let url = "http://localhost:4300/user/find";
+    let url = baseurl+"/user/find";
     const reqOptions = {
       method: "GET",
       headers: new Headers({

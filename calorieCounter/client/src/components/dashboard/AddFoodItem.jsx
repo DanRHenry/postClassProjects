@@ -1,7 +1,7 @@
 //!https://surveyjs.io/form-library/examples/create-dropdown-menu-in-javascript/reactjs#
 import { React, useRef } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
-
+import { baseurl } from "../../helpers/url";
 export default function AddFoodItem(props) {
   // const creatorNameRef = "";
   const foodNameRef = useRef();
@@ -54,7 +54,7 @@ export default function AddFoodItem(props) {
         mealType,
       });
 
-      const url = "http://localhost:4300/food/storeFood";
+      const url = baseurl+"/food/storeFood";
 
       const headers = new Headers();
 

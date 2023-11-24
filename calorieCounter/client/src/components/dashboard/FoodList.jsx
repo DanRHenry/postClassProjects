@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { Table, Container } from "reactstrap";
 import AddFoodItem from "./AddFoodItem";
 import { Button } from "reactstrap";
+import { baseurl } from "../../helpers/url";
 // import { createRoutesFromElements } from "react-router-dom";
 
 // import { useParams, useNavigate } from "react-router-dom";
@@ -28,7 +29,7 @@ export default function FoodList(props) {
       method: "GET",
       headers: new Headers({}),
     };
-    let url = `http://localhost:4300/food/`;
+    let url = baseurl+`/food/`;
     try {
       const res = await fetch(url, reqOptions);
       const data = await res.json();

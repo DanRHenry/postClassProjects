@@ -23,7 +23,6 @@ const SECRET = process.env.JWT;
 
 router.post("/signup", async (req, res) => {
   try {
-    console.log("req.body", req.body);
     // Creating a new object based off the Model Schema.
     const user = new User({
       firstName: "",
@@ -42,6 +41,7 @@ router.post("/signup", async (req, res) => {
     // Create a token using the sign method of jwt, (payload, message, exp)
     // The payload should be the user ID, and secret message should eventually be in the .env
     const token = jwt.sign({ id: user._id }, SECRET, { expiresIn: "1 day" });
+
     if (newUser) {
       console.log("newUser:", newUser, "token:", token);
     }
@@ -62,15 +62,17 @@ router.post("/signup", async (req, res) => {
 */
 
 router.post("/login", async (req, res) => {
+  console.log("connected to login")
+  console.log('req.body',req.body)
   try {
     const { email, password } = req.body;
-
+    console.log("email and password from req.body:",email, password)
     const user = await User.findOne({ email: email });
-
+    console.log("user:",user)
     if (!user) throw new Error("Email or password does not match.");
 
     const passwordMatch = await bcrypt.compare(password, user.password);
-
+    console.log("passwordMatch",passwordMatch)
     if (!passwordMatch) throw new Error("Email or password does not match.");
 
     const token = jwt.sign({ id: user._id }, SECRET, {
@@ -83,6 +85,7 @@ router.post("/login", async (req, res) => {
       token,
     });
   } catch (err) {
+    console.log("here's the catch")
     serverError(res, err);
   }
 });

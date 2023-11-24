@@ -34,7 +34,7 @@ const mongoose = require("mongoose");
 const MONGO = process.env.MONGODB;
 
 mongoose.connect(`${MONGO}/calorieCounter`);
-
+// console.log(MONGO,"has connected")
 // Create a variable that is an event listener to check if connected.
 const db = mongoose.connection;
 

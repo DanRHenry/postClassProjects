@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
+import { baseurl } from "../../../helpers/url";
 export default function Login({ updateToken }) {
   // This could also have been written: props.updateToken
   // Build our refs
@@ -20,7 +21,7 @@ export default function Login({ updateToken }) {
     }); // Let because the body can be reassigned
 
     // Declare and init our url
-    const url = "http://localhost:4300/user/login";
+    const url = baseurl+"/user/login";
     // Try/catch = fetch w/request options within fetch
     try {
       // This is an alternative way of writing the fetch than we did before. It's more dense, but fewer lines.

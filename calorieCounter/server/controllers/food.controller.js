@@ -12,7 +12,7 @@ const serverError = (res, error) => {
 
 router.post("/storeFood", async (req, res) => {
   try {
-    console.log("req.body", req.body);
+    // console.log("req.body", req.body);
     // Creating a new object based off the Model Schema.
     const food = new Food({
       creatorName: req.body.creatorName,

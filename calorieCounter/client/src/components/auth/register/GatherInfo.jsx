@@ -2,7 +2,7 @@ import React from "react";
 import { useRef } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
-
+import { baseurl } from "../../../helpers/url";
 export default function GatherInfo(props) {
   const navigate = useNavigate();
   const firstNameRef = useRef();
@@ -36,7 +36,7 @@ export default function GatherInfo(props) {
     });
 
 
-    const url = "http://localhost:4300/user/edit";
+    const url = baseurl+"/user/edit";
     const token = localStorage.getItem("token");
     // console.log("token:",token)
     const headers = new Headers({
