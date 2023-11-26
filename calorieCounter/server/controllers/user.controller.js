@@ -22,8 +22,8 @@ const jwt = require("jsonwebtoken");
 const SECRET = process.env.JWT;
 
 router.post("/signup", async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  // res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   try {
     // Creating a new object based off the Model Schema.
     const user = new User({
@@ -67,8 +67,8 @@ router.post("/signup", async (req, res) => {
 */
 
 router.post("/login", async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  // res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   console.log("connected to login")
   console.log('req.body',req.body)
   try {
@@ -102,8 +102,8 @@ router.post("/login", async (req, res) => {
 */
 
 router.get("/find", requireValidation, async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  // res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
       try {
       const id = req.user._id;
 
@@ -128,8 +128,8 @@ router.get("/find", requireValidation, async (req, res) => {
 
 // router.patch("/edit/", async (req, res) => {
 router.patch("/edit", requireValidation, async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  // res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   try {
     // pull value from parameter (id)
     const id = req.user._id;
@@ -198,8 +198,8 @@ router.patch("/edit", requireValidation, async (req, res) => {
 ----------------------------- Delete Account Endpoint ------------------------
 */
 router.delete("/delete", requireValidation, async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  // res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   console.log("deleting...");
   try {
     //* Pull the user's info from the req
