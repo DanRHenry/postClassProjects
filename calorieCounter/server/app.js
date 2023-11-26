@@ -45,7 +45,9 @@ db.once("open", () => log(`Connected: ${MONGO}`));
 app.use(express.json());
 
 // Allowing the app to use cors
-app.use(cors());
+app.use(cors({
+    origin: "*",
+}));
 
 app.use("/user", user);
 app.use("/food", food);
