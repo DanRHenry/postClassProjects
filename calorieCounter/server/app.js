@@ -46,7 +46,8 @@ app.use(express.json());
 
 // Allowing the app to use cors
 app.use(cors({
-    origin: "*",
+    // origin: "*",
+    origin: "https://danhenrydev.com",
     optionsSuccessStatus: 200
 }));
 
