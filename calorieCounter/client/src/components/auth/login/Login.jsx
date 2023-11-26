@@ -29,6 +29,7 @@ export default function Login({ updateToken }) {
         method: "POST",
         headers: new Headers({
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         }),
         body: body, // The second body refers to the body object above.
       });
