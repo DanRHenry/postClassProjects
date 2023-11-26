@@ -47,6 +47,7 @@ app.use(express.json());
 // Allowing the app to use cors
 app.use(cors({
     origin: "*",
+    optionsSuccessStatus: 200
 }));
 
 app.use("/user", user);
