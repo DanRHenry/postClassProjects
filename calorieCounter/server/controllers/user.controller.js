@@ -67,7 +67,7 @@ router.post("/signup", async (req, res) => {
 */
 
 router.post("/login", async (req, res) => {
-  // res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "*");
   // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   console.log("connected to login")
   console.log('req.body',req.body)
