@@ -89,6 +89,8 @@ app.options("*", (req, res) => {
     }
     })
 //!
-app.use("/user", user);
-app.use("/food", food);
+app.use("/api/user", user);
+app.use("/api/food", food);
+// app.use("/user", user);
+// app.use("/food", food);
 app.listen(PORT, () => log(`CalorieCounter Server on Port: ${PORT}`));
