@@ -54,10 +54,12 @@ export default function FoodList(props) {
     displayFoodItems();
   }, []);
 
+
   useEffect(() => {
     // if (currentCalories != currentCalories) {
       props.setDailyCalories(currentCalories);
     // }
+    
   });
   let displayFoodItems = () =>
     // currentCalories = 0;
@@ -85,13 +87,39 @@ export default function FoodList(props) {
         // let mealType = item.mealType;
         let totalCalories = quantity * calories;
         currentCalories += totalCalories;
+
+          const assignFoodNames = () => {
+          let foodNames = document.getElementsByClassName("tableItemName");
+            console.log(foodNames);
+            // document.querySelector(foodName).style.color = "blue";
+          }
+        
+        const editFoodNames = () => {
+          console.log("clicked food names")
+        }
+        const editQuantity = () => {
+          console.log("clicked quantity")
+        }
+
+        const editUnit = () => {
+          console.log("clicked Unit")
+        }
+
+        const editCalories = () => {
+          console.log("clicked calories")
+          
+        }
+
+
+        
         return (
-          <tr key={foodData.indexOf(item)}>
-            <td>{foodName}</td>
-            <td>{quantity}</td>
-            <td>{unit}</td>
-            <td>{calories}</td>
-            <td>{totalCalories}</td>
+          <tr className="tableContainer" key={foodData.indexOf(item)}>
+            <td className="tableItemName" onClick={editFoodNames}>{foodName}</td>
+            <td className="tableItemQuantity" onClick={editQuantity}>{quantity}</td>
+            <td className="tableItemUnit" onClick={editUnit}>{unit}</td>
+            <td className="tableCalories" onClick={editCalories}>{calories}</td>
+            {/* <td calendar>{calories}</td> */}
+            <td className="tableTotalCalories">{totalCalories}</td>
           </tr>
         );
       }
@@ -204,7 +232,7 @@ export default function FoodList(props) {
       </div>
       <Table striped>
         <thead id="tableHeader">
-          <tr>
+          <tr className="tableHeaderLabels">
             <th>Food Name</th>
             <th>Quantity</th>
             <th>Unit</th>

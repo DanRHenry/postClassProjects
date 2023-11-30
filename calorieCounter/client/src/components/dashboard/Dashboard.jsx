@@ -19,7 +19,7 @@ export default function Dashboard() {
   let tempColor;
 
   const getUserInformation = async () => {
-    let url = baseurl+"/user/find";
+    let url = baseurl + "/user/find";
     const reqOptions = {
       method: "GET",
       headers: new Headers({
@@ -71,22 +71,22 @@ export default function Dashboard() {
   }
 
   return (
-    <>
+    <div  className="mainDiv">
       <FoodHeaders
-      month = {month}
-      day = {day}
-      year = {year}
-      information = {information}
-      dailyCalories = {dailyCalories}
+        month={month}
+        day={day}
+        year={year}
+        information={information}
+        dailyCalories={dailyCalories}
       />
-            <FoodList
-              information={information}
-              day={date.getDate()}
-              month={date.getMonth() + 1}
-              year={date.getFullYear()}
-              setDailyCalories={setDailyCalories}
-              dailyCalories={dailyCalories}
-            />
-    </>
+      <FoodList
+        information={information}
+        day={date.getDate()}
+        month={date.getMonth() + 1}
+        year={date.getFullYear()}
+        setDailyCalories={setDailyCalories}
+        dailyCalories={dailyCalories}
+      />
+    </div>
   );
 }
