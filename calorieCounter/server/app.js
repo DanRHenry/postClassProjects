@@ -78,7 +78,8 @@ app.use((req, res, next) => {
 app.options("*", (req, res) => {
     console.log("preflight");
     if (
-      req.headers.origin === "https://badmintown.onrender.com" &&
+//      req.headers.origin === "https://badmintown.onrender.com" &&
+      req.headers.origin === "https://danhenrydev.com" &&
       allowMethods.includes(req.headers["access-control-request-method"]) &&
       allowHeaders.includes(req.headers["access-control-request-headers"])
     ) {
@@ -89,6 +90,15 @@ app.options("*", (req, res) => {
     }
     })
 //!
+
+// app.use(express.static(path.join(__dirname, 'build')));
+
+//-app.get('/', function (req, res) {
+//+app.get('/*', function (req, res) {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
+
+
 app.use("/api/user", user);
 app.use("/api/food", food);
 // app.use("/user", user);
