@@ -88,36 +88,41 @@ export default function FoodList(props) {
         let totalCalories = quantity * calories;
         currentCalories += totalCalories;
 
-          const assignFoodNames = () => {
-          let foodNames = document.getElementsByClassName("tableItemName");
-            console.log(foodNames);
-            // document.querySelector(foodName).style.color = "blue";
-          }
-        
+        const foodID = "food_"+foodData.indexOf(item);
+        const quantityID = "quantity_"+foodData.indexOf(item);
+        const unitID = "unit_"+foodData.indexOf(item);
+        const caloriesID = "calories_"+foodData.indexOf(item);
+
         const editFoodNames = () => {
-          console.log("clicked food names")
+          const foodItem = document.getElementById(foodID);
+          foodItem.style.color = "blue"
+          // console.log("clicked food names")
         }
         const editQuantity = () => {
-          console.log("clicked quantity")
+          const foodItem = document.getElementById(quantityID);
+          foodItem.style.color = "blue"
         }
 
         const editUnit = () => {
-          console.log("clicked Unit")
+          const foodItem = document.getElementById(unitID);
+          foodItem.style.color = "blue"
+          // console.log("clicked Unit")
         }
 
         const editCalories = () => {
-          console.log("clicked calories")
+          const foodItem = document.getElementById(caloriesID);
+          foodItem.style.color = "blue"
+          // console.log("clicked calories")
           
         }
 
 
-        
         return (
           <tr className="tableItems tableContainer" key={foodData.indexOf(item)}>
-            <td className="tableItems tableItemName" onClick={editFoodNames}>{foodName}</td>
-            <td className="tableItems tableItemQuantity" onClick={editQuantity}>{quantity}</td>
-            <td className="tableItems tableItemUnit" onClick={editUnit}>{unit}</td>
-            <td className="tableItems tableCalories" onClick={editCalories}>{calories}</td>
+            <td className="tableItems tableItemName" id={foodID} onClick={editFoodNames}>{foodName}</td>
+            <td className="tableItems tableItemQuantity" id={quantityID} onClick={editQuantity}>{quantity}</td>
+            <td className="tableItems tableItemUnit" id={unitID} onClick={editUnit}>{unit}</td>
+            <td className="tableItems tableCalories" id={caloriesID} onClick={editCalories}>{calories}</td>
             {/* <td calendar>{calories}</td> */}
             <td className="tableItems tableTotalCalories">{totalCalories}</td>
           </tr>
