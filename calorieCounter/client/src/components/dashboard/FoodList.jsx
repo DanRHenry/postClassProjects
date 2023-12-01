@@ -113,13 +113,13 @@ export default function FoodList(props) {
 
         
         return (
-          <tr className="tableContainer" key={foodData.indexOf(item)}>
-            <td className="tableItemName" onClick={editFoodNames}>{foodName}</td>
-            <td className="tableItemQuantity" onClick={editQuantity}>{quantity}</td>
-            <td className="tableItemUnit" onClick={editUnit}>{unit}</td>
-            <td className="tableCalories" onClick={editCalories}>{calories}</td>
+          <tr className="tableItems tableContainer" key={foodData.indexOf(item)}>
+            <td className="tableItems tableItemName" onClick={editFoodNames}>{foodName}</td>
+            <td className="tableItems tableItemQuantity" onClick={editQuantity}>{quantity}</td>
+            <td className="tableItems tableItemUnit" onClick={editUnit}>{unit}</td>
+            <td className="tableItems tableCalories" onClick={editCalories}>{calories}</td>
             {/* <td calendar>{calories}</td> */}
-            <td className="tableTotalCalories">{totalCalories}</td>
+            <td className="tableItems tableTotalCalories">{totalCalories}</td>
           </tr>
         );
       }
