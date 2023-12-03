@@ -5,6 +5,9 @@ import { Table, Container } from "reactstrap";
 import AddFoodItem from "./AddFoodItem";
 import { Button } from "reactstrap";
 import { baseurl } from "../../helpers/url";
+import EditFoodItem from "./EditFoodItem";
+import DisplayFoodItem from "./DisplayFoodItem";
+
 // import { createRoutesFromElements } from "react-router-dom";
 
 // import { useParams, useNavigate } from "react-router-dom";
@@ -22,6 +25,8 @@ export default function FoodList(props) {
   const [currentDay, setDay] = useState(thisDay);
   const [currentMonth, setMonth] = useState(thisMonth);
   const [currentYear, setYear] = useState(thisYear);
+  const [foodItemEditCheck, setFoodItemEditCheck] = useState(false);
+  
   //   --------------------- GET -----------------
 
   let getFoodInformation = async function () {
@@ -116,16 +121,33 @@ export default function FoodList(props) {
           
         }
 
+        let display;
+        if (foodItemEditCheck === false) {
+          display = <DisplayFoodItem
+          editFoodNames = {editFoodNames}
+          editQuantity = {editQuantity}
+          editUnit = {editUnit}
+          editCalories = {editCalories}
+          foodID = {foodID}
+          quantityID = {quantityID}
+          unitID = {unitID}
+          caloriesID = {caloriesID}
+          foodData = {foodData}
+          item = {item}
+          foodName = {foodName}
+          quantity = {quantity}
+          unit = {unit}
+          calories = {calories}
+          totalCalories = {totalCalories}
+          
+          />
+        }  else { display = <EditFoodItem
+        
+        />
+        }
 
         return (
-          <tr className="tableItems tableContainer" key={foodData.indexOf(item)}>
-            <td className="tableItems tableItemName" id={foodID} onClick={editFoodNames}>{foodName}</td>
-            <td className="tableItems tableItemQuantity" id={quantityID} onClick={editQuantity}>{quantity}</td>
-            <td className="tableItems tableItemUnit" id={unitID} onClick={editUnit}>{unit}</td>
-            <td className="tableItems tableCalories" id={caloriesID} onClick={editCalories}>{calories}</td>
-            {/* <td calendar>{calories}</td> */}
-            <td className="tableItems tableTotalCalories">{totalCalories}</td>
-          </tr>
+          display
         );
       }
     });
