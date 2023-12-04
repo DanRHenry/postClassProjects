@@ -4,55 +4,20 @@ import { Form, FormGroup, Input, Button } from "reactstrap";
 import { baseurl } from "../../../helpers/url";
 
 export default function EditCalories(props) {
-  // const creatorNameRef = "";
-  const foodNameRef = useRef();
-  // const mealCategoryRef = useRef();
-  const unitRef = useRef();
-  const quantityRef = useRef();
   const caloriesRef = useRef();
-  // const mealTypeRef = useRef();
-  // const [formInputFields, setFormInputFields] = useState();
-  const userEmail = props.information.email;
 
-  let day;
-
-  if (props.day < 10) {
-    day = `0${props.day.toString()}`;
-  } else {
-    day = props.day;
-  }
   //  --------------------- PATCH ----------------
   async function handleSubmit(e) {
-    if (foodNameRef.current.value !== "") {
+    if (caloriesRef.current.value !== "") {
       //* Stop the page from refreshing when the form submits
       e.preventDefault();
 
       //* Creating a variable that holds each input's ref value
-      const creatorName = userEmail;
-
-      const date = props.year.toString() + props.month.toString() + day;
-      // const creatorName = creatorNameRef.current.value;
-
-      const foodName = foodNameRef.current.value;
-      const mealCategory = "mealCategoryRef.current.value"; //IE Breakfast, lunch, dinner, snack
-      const unit = unitRef.current.value;
-      const quantity = quantityRef.current.value;
       const calories = caloriesRef.current.value;
-      const mealType = "mealTypeRef.current.value"; // ie: Protein, sugary snack, etc.
 
-      // setFormInputFields(
-
-      // )
       //* The server expects json, we need to build and json-ify a user object to send to our server
       let newFoodObj = JSON.stringify({
-        creatorName,
-        date,
-        foodName,
-        mealCategory,
-        unit,
-        quantity,
         calories,
-        mealType,
       });
 
       const url = baseurl+"/food/storeFood";
@@ -93,27 +58,6 @@ export default function EditCalories(props) {
     <div id="inputFormsAndButton">
       <Form onSubmit={handleSubmit}>
         <FormGroup className="inputFields">
-          <Input
-            name="Food"
-            placeholder="Food"
-            innerRef={foodNameRef}
-            type="text"
-            autoComplete="off"
-          />
-          <Input
-            name="Amount"
-            placeholder="Amount"
-            innerRef={quantityRef}
-            type="number"
-            autoComplete="off"
-          />
-          <Input
-            name="Unit"
-            placeholder="Unit"
-            innerRef={unitRef}
-            type="text"
-            autoComplete="off"
-          />
           <Input
             name="Calories"
             placeholder="Calories"
