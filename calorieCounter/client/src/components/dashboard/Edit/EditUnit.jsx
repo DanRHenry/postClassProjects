@@ -16,7 +16,7 @@ export default function EditUnit(props) {
         unit,
       });
 
-      const url = baseurl+"/food/storeFood";
+      const url = baseurl+"/food/edit";
 
       const headers = new Headers();
 

@@ -20,7 +20,7 @@ export default function EditCalories(props) {
         calories,
       });
 
-      const url = baseurl+"/food/storeFood";
+      const url = baseurl+"/food/edit";
 
       const headers = new Headers();
 

@@ -5,7 +5,6 @@ import { baseurl } from "../../../helpers/url";
 
 export default function EditQuantity(props) {
   const quantityRef = useRef();
-  const userEmail = props.information.email;
 
   let day;
 
@@ -28,7 +27,7 @@ export default function EditQuantity(props) {
         quantity,
       });
 
-      const url = baseurl+"/food/storeFood";
+      const url = baseurl+"/food/edit";
 
       const headers = new Headers();
 
