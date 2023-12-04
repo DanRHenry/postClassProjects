@@ -5,7 +5,7 @@ import { Table, Container } from "reactstrap";
 import AddFoodItem from "./AddFoodItem";
 import { Button } from "reactstrap";
 import { baseurl } from "../../helpers/url";
-import EditFoodItem from "./EditFoodItem";
+import EditFoodItem from "./Edit/EditFoodItem";
 import DisplayFoodItem from "./DisplayFoodItem";
 
 // import { createRoutesFromElements } from "react-router-dom";
@@ -25,8 +25,13 @@ export default function FoodList(props) {
   const [currentDay, setDay] = useState(thisDay);
   const [currentMonth, setMonth] = useState(thisMonth);
   const [currentYear, setYear] = useState(thisYear);
-  const [foodItemEditCheck, setFoodItemEditCheck] = useState(false);
-  
+  const [foodItemEditCheck, setFoodItemEditCheck] = useState();
+  const [quantityEditCheck, setQuantityEditCheck] = useState();
+  const [unitEditCheck, setUnitEditCheck] = useState();
+  const [calorieEditCheck, setCalorieEditCheck] = useState();
+  useEffect(() => {
+    console.log("foodItemEditCheck:",foodItemEditCheck)
+  })
   //   --------------------- GET -----------------
 
   let getFoodInformation = async function () {
@@ -122,7 +127,14 @@ export default function FoodList(props) {
         }
 
         let display;
-        if (foodItemEditCheck === false) {
+        if (foodID === foodItemEditCheck ) { display = <EditFoodItem
+        //   setFoodItemEditCheck = {setFoodItemEditCheck}
+          information = {props.information}
+        />
+        console.log("match","foodID", foodID, "foodItemEditCheck", foodItemEditCheck)
+
+        } else if (foodID != foodItemEditCheck)
+        {
           display = <DisplayFoodItem
           editFoodNames = {editFoodNames}
           editQuantity = {editQuantity}
@@ -139,11 +151,9 @@ export default function FoodList(props) {
           unit = {unit}
           calories = {calories}
           totalCalories = {totalCalories}
-          
+          setFoodItemEditCheck = {setFoodItemEditCheck} 
           />
-        }  else { display = <EditFoodItem
-        
-        />
+          console.log("no match","foodID", foodID, "foodItemEditCheck", foodItemEditCheck)
         }
 
         return (

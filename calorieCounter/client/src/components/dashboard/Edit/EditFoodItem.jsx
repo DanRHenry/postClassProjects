@@ -1,18 +1,18 @@
 //!https://surveyjs.io/form-library/examples/create-dropdown-menu-in-javascript/reactjs#
 import { React, useRef } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
-import { baseurl } from "../../helpers/url";
+import { baseurl } from "../../../helpers/url";
 
 export default function EditFoodItem(props) {
   // const creatorNameRef = "";
   const foodNameRef = useRef();
   // const mealCategoryRef = useRef();
-  const unitRef = useRef();
-  const quantityRef = useRef();
-  const caloriesRef = useRef();
+  // const unitRef = useRef();
+  // const quantityRef = useRef();
+  // const caloriesRef = useRef();
   // const mealTypeRef = useRef();
   // const [formInputFields, setFormInputFields] = useState();
-  const userEmail = props.information.email;
+  // const userEmail = props.information.email;
 
   let day;
 
@@ -28,16 +28,16 @@ export default function EditFoodItem(props) {
       e.preventDefault();
 
       //* Creating a variable that holds each input's ref value
-      const creatorName = userEmail;
+      // const creatorName = userEmail;
 
       const date = props.year.toString() + props.month.toString() + day;
       // const creatorName = creatorNameRef.current.value;
 
       const foodName = foodNameRef.current.value;
       const mealCategory = "mealCategoryRef.current.value"; //IE Breakfast, lunch, dinner, snack
-      const unit = unitRef.current.value;
-      const quantity = quantityRef.current.value;
-      const calories = caloriesRef.current.value;
+      // const unit = unitRef.current.value;
+      // const quantity = quantityRef.current.value;
+      // const calories = caloriesRef.current.value;
       const mealType = "mealTypeRef.current.value"; // ie: Protein, sugary snack, etc.
 
       // setFormInputFields(
@@ -45,13 +45,13 @@ export default function EditFoodItem(props) {
       // )
       //* The server expects json, we need to build and json-ify a user object to send to our server
       let newFoodObj = JSON.stringify({
-        creatorName,
+        // creatorName,
         date,
         foodName,
         mealCategory,
-        unit,
-        quantity,
-        calories,
+        // unit,
+        // quantity,
+        // calories,
         mealType,
       });
 
@@ -100,7 +100,7 @@ export default function EditFoodItem(props) {
             type="text"
             autoComplete="off"
           />
-          <Input
+          {/* <Input
             name="Amount"
             placeholder="Amount"
             innerRef={quantityRef}
@@ -120,7 +120,7 @@ export default function EditFoodItem(props) {
             innerRef={caloriesRef}
             type="number"
             autoComplete="off"
-          />
+          /> */}
         </FormGroup>
       </Form>
       <Button id="submit" onClick={handleSubmit}>
