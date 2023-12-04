@@ -24,7 +24,9 @@ export default function EditFoodItem(props) {
         foodName,
       });
 
-      const url = baseurl+"/food/storeFood";
+      const url = baseurl+"/food/edit";
+      // const url = baseurl+"/food/storeFood";
+
 
       const headers = new Headers();
 

@@ -44,6 +44,49 @@ router.post("/storeFood", async (req, res) => {
   }
 });
 
+// ------------------------ PATCH ----------------------
+
+router.patch ("/edit/", async (req, res) => {
+  try {
+    const id = req.food._id;
+    const foodFilter = {_id: id};
+    const { creatorName, date, foodName, mealCategory, unit, quantity, calories, mealType } = req.body;
+  
+    const info = {
+      creatorName: creatorName,
+      date: date,
+      foodName: foodName,
+      mealCategory: mealCategory,
+      unit: unit,
+      quantity: quantity,
+      calories: calories,
+      mealType: mealType,
+    }
+
+    // not sure what this does...
+    const returnOption = { new: true};
+    const updatedFoodInformation = await Food.findOneAndUpdate(
+      foodFilter,
+      info,
+      returnOption
+      )
+      if (!updatedFoodInformation) {
+        return res.status(404).json({
+          message: `Food entry not found.`
+        });
+      }
+      updatedFoodInformation
+        ? res.status(200).json({
+          message: `Food entry updated` 
+        })
+        : res.status(404).json({
+          message: `Food entry not found.`
+        })
+  } catch (err) {
+    serverError(res, err);
+  }
+})
+
 // ------------------------- GET -----------------------
 
 router.get("/find/:id", async (req, res) => {
