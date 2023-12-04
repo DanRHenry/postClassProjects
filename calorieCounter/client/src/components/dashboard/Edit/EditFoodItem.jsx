@@ -18,20 +18,10 @@ export default function EditFoodItem(props) {
     if (foodNameRef.current.value !== "") {
       //* Stop the page from refreshing when the form submits
       e.preventDefault();
-
-      const date = props.year.toString() + props.month.toString() + day;
-      // const creatorName = creatorNameRef.current.value;
-
       const foodName = foodNameRef.current.value;
-      const mealCategory = "mealCategoryRef.current.value"; //IE Breakfast, lunch, dinner, snack
-      const mealType = "mealTypeRef.current.value"; // ie: Protein, sugary snack, etc.
-
       //* The server expects json, we need to build and json-ify a user object to send to our server
       let newFoodObj = JSON.stringify({
-        date,
         foodName,
-        mealCategory,
-        mealType,
       });
 
       const url = baseurl+"/food/storeFood";
