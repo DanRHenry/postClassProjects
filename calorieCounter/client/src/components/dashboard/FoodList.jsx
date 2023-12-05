@@ -126,16 +126,22 @@ export default function FoodList(props) {
           
         }
 
-        let display;
-        if (foodID === foodItemEditCheck ) { display = <EditFoodItem
+        let foodDisplay;
+        let quantityDisplay;
+        let unitDisplay;
+        let calorieDisplay;
+
+        //! ----------------------------------------------- Food Item Display & Edit -------------------------------------------
+
+        if (foodID === foodItemEditCheck ) { 
+          foodDisplay = <EditFoodItem
         //   setFoodItemEditCheck = {setFoodItemEditCheck}
           information = {props.information}
         />
-        console.log("match","foodID", foodID, "foodItemEditCheck", foodItemEditCheck)
 
         } else if (foodID != foodItemEditCheck)
         {
-          display = <DisplayFoodItem
+          foodDisplay = <DisplayFoodItem
           editFoodNames = {editFoodNames}
           editQuantity = {editQuantity}
           editUnit = {editUnit}
@@ -157,7 +163,112 @@ export default function FoodList(props) {
         }
 
         return (
-          display
+          foodDisplay
+        );
+
+        //! ------------------------------------------------ Quantity Display & Edit --------------------------------------------
+
+        if (quantityID === quantityEditCheck ) { 
+          quantityDisplay = <EditFoodItem
+        //   setFoodItemEditCheck = {setFoodItemEditCheck}
+          information = {props.information}
+        />
+
+        } else if (foodID != foodItemEditCheck)
+        {
+          quantityDisplay = <DisplayFoodItem
+          editFoodNames = {editFoodNames}
+          editQuantity = {editQuantity}
+          editUnit = {editUnit}
+          editCalories = {editCalories}
+          foodID = {foodID}
+          quantityID = {quantityID}
+          unitID = {unitID}
+          caloriesID = {caloriesID}
+          foodData = {foodData}
+          item = {item}
+          foodName = {foodName}
+          quantity = {quantity}
+          unit = {unit}
+          calories = {calories}
+          totalCalories = {totalCalories}
+          setFoodItemEditCheck = {setFoodItemEditCheck} 
+          />
+          console.log("no match","foodID", foodID, "foodItemEditCheck", foodItemEditCheck)
+        }
+
+        return (
+          quantityDisplay
+        );
+
+        //! --------------------------------------------------- Unit Display & Edit ---------------------------------------------
+
+        if (foodID === foodItemEditCheck ) { 
+          unitDisplay = <EditFoodItem
+        //   setFoodItemEditCheck = {setFoodItemEditCheck}
+          information = {props.information}
+        />
+
+        } else if (foodID != foodItemEditCheck)
+        {
+          quantityDisplay = <DisplayFoodItem
+          editFoodNames = {editFoodNames}
+          editQuantity = {editQuantity}
+          editUnit = {editUnit}
+          editCalories = {editCalories}
+          foodID = {foodID}
+          quantityID = {quantityID}
+          unitID = {unitID}
+          caloriesID = {caloriesID}
+          foodData = {foodData}
+          item = {item}
+          foodName = {foodName}
+          quantity = {quantity}
+          unit = {unit}
+          calories = {calories}
+          totalCalories = {totalCalories}
+          setFoodItemEditCheck = {setFoodItemEditCheck} 
+          />
+          console.log("no match","foodID", foodID, "foodItemEditCheck", foodItemEditCheck)
+        }
+
+        return (
+          quantityDisplay
+        );
+
+        //! ------------------------------------------------- Calorie Display & Edit --------------------------------------------
+
+        if (foodID === foodItemEditCheck ) { 
+          calorieDisplay = <EditFoodItem
+        //   setFoodItemEditCheck = {setFoodItemEditCheck}
+          information = {props.information}
+        />
+
+        } else if (foodID != foodItemEditCheck)
+        {
+          calorieDisplay = <DisplayFoodItem
+          editFoodNames = {editFoodNames}
+          editQuantity = {editQuantity}
+          editUnit = {editUnit}
+          editCalories = {editCalories}
+          foodID = {foodID}
+          quantityID = {quantityID}
+          unitID = {unitID}
+          caloriesID = {caloriesID}
+          foodData = {foodData}
+          item = {item}
+          foodName = {foodName}
+          quantity = {quantity}
+          unit = {unit}
+          calories = {calories}
+          totalCalories = {totalCalories}
+          setFoodItemEditCheck = {setFoodItemEditCheck} 
+          />
+          console.log("no match","foodID", foodID, "foodItemEditCheck", foodItemEditCheck)
+        }
+
+        return (
+          calorieDisplay
         );
       }
     });
