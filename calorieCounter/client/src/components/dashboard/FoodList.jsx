@@ -29,9 +29,7 @@ export default function FoodList(props) {
   const [quantityEditCheck, setQuantityEditCheck] = useState();
   const [unitEditCheck, setUnitEditCheck] = useState();
   const [calorieEditCheck, setCalorieEditCheck] = useState();
-  useEffect(() => {
-    console.log("foodItemEditCheck:",foodItemEditCheck)
-  })
+
   //   --------------------- GET -----------------
 
   let getFoodInformation = async function () {
