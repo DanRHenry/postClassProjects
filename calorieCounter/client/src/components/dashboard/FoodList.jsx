@@ -135,6 +135,7 @@ export default function FoodList(props) {
 
         } else if (foodID != foodItemEditCheck)
         {
+          <tr className="tableItems tableContainer" key={props.foodData.indexOf(props.item)}>
           display = <DisplayFoodItem
           editFoodNames = {editFoodNames}
           editQuantity = {editQuantity}
@@ -153,6 +154,7 @@ export default function FoodList(props) {
           totalCalories = {totalCalories}
           setFoodItemEditCheck = {setFoodItemEditCheck} 
           />
+          </tr>
           console.log("no match","foodID", foodID, "foodItemEditCheck", foodItemEditCheck)
         }
 

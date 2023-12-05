@@ -4,14 +4,7 @@ import { Form, FormGroup, Input, Button } from "reactstrap";
 import { baseurl } from "../../../helpers/url";
 
 export default function EditCalories(props) {
-  // const creatorNameRef = "";
   const foodNameRef = useRef();
-  // const mealCategoryRef = useRef();
-  const unitRef = useRef();
-  const quantityRef = useRef();
-  const caloriesRef = useRef();
-  // const mealTypeRef = useRef();
-  // const [formInputFields, setFormInputFields] = useState();
   const userEmail = props.information.email;
 
   let day;
