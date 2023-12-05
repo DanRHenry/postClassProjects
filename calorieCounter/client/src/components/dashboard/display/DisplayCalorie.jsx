@@ -1,8 +1,8 @@
 //!https://surveyjs.io/form-library/examples/create-dropdown-menu-in-javascript/reactjs#
 import { React, useRef } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
-import { baseurl } from "../../helpers/url";
-export default function DisplayFoodItem(props) {
+import { baseurl } from "../../../helpers/url";
+export default function DisplayCalorie(props) {
 const setFoodEdit = () => {
   props.setFoodItemEditCheck(props.foodID);
 }
@@ -11,6 +11,8 @@ const setQuantityEdit = () => {
 }
 
 const setUnitEdit = () => {
+  console.log("props:",props)
+  console.log("props.setUnitEditCheck:",props.setUnitEditCheck)
   props.setUnitEditCheck(props.unitID);
 }
 

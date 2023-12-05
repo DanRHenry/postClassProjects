@@ -6,7 +6,7 @@ import AddFoodItem from "./AddFoodItem";
 import { Button } from "reactstrap";
 import { baseurl } from "../../helpers/url";
 import EditFoodItem from "./Edit/EditFoodItem";
-import DisplayFoodItem from "./DisplayFoodItem";
+import DisplayFoodItem from "./display/DisplayFoodItem";
 
 // import { createRoutesFromElements } from "react-router-dom";
 
@@ -135,11 +135,10 @@ export default function FoodList(props) {
 
         if (foodID === foodItemEditCheck ) { 
           foodDisplay = <EditFoodItem
-        //   setFoodItemEditCheck = {setFoodItemEditCheck}
           information = {props.information}
         />
 
-        } else if (foodID != foodItemEditCheck)
+        } else if (foodID !== foodItemEditCheck)
         {
           foodDisplay = <DisplayFoodItem
           editFoodNames = {editFoodNames}
@@ -159,7 +158,6 @@ export default function FoodList(props) {
           totalCalories = {totalCalories}
           setFoodItemEditCheck = {setFoodItemEditCheck} 
           />
-          console.log("no match","foodID", foodID, "foodItemEditCheck", foodItemEditCheck)
         }
 
         return (
@@ -174,7 +172,7 @@ export default function FoodList(props) {
           information = {props.information}
         />
 
-        } else if (foodID != foodItemEditCheck)
+        } else if (quantityID !== quantityEditCheck)
         {
           quantityDisplay = <DisplayFoodItem
           editFoodNames = {editFoodNames}
@@ -192,9 +190,8 @@ export default function FoodList(props) {
           unit = {unit}
           calories = {calories}
           totalCalories = {totalCalories}
-          setFoodItemEditCheck = {setFoodItemEditCheck} 
+          setQuantityEditCheck = {setQuantityEditCheck} 
           />
-          console.log("no match","foodID", foodID, "foodItemEditCheck", foodItemEditCheck)
         }
 
         return (
@@ -203,13 +200,13 @@ export default function FoodList(props) {
 
         //! --------------------------------------------------- Unit Display & Edit ---------------------------------------------
 
-        if (foodID === foodItemEditCheck ) { 
+        if (unitID === unitEditCheck ) { 
           unitDisplay = <EditFoodItem
         //   setFoodItemEditCheck = {setFoodItemEditCheck}
           information = {props.information}
         />
 
-        } else if (foodID != foodItemEditCheck)
+        } else if (unitID !== unitEditCheck)
         {
           quantityDisplay = <DisplayFoodItem
           editFoodNames = {editFoodNames}
@@ -227,9 +224,8 @@ export default function FoodList(props) {
           unit = {unit}
           calories = {calories}
           totalCalories = {totalCalories}
-          setFoodItemEditCheck = {setFoodItemEditCheck} 
+          setUnitEditCheck = {setUnitEditCheck} 
           />
-          console.log("no match","foodID", foodID, "foodItemEditCheck", foodItemEditCheck)
         }
 
         return (
@@ -238,13 +234,13 @@ export default function FoodList(props) {
 
         //! ------------------------------------------------- Calorie Display & Edit --------------------------------------------
 
-        if (foodID === foodItemEditCheck ) { 
+        if (caloriesID === calorieEditCheck ) { 
           calorieDisplay = <EditFoodItem
         //   setFoodItemEditCheck = {setFoodItemEditCheck}
           information = {props.information}
         />
 
-        } else if (foodID != foodItemEditCheck)
+        } else if (caloriesID !== calorieEditCheck)
         {
           calorieDisplay = <DisplayFoodItem
           editFoodNames = {editFoodNames}
@@ -262,9 +258,8 @@ export default function FoodList(props) {
           unit = {unit}
           calories = {calories}
           totalCalories = {totalCalories}
-          setFoodItemEditCheck = {setFoodItemEditCheck} 
+          setCalorieEditCheck = {setCalorieEditCheck} 
           />
-          console.log("no match","foodID", foodID, "foodItemEditCheck", foodItemEditCheck)
         }
 
         return (
