@@ -6,7 +6,15 @@ import AddFoodItem from "./AddFoodItem";
 import { Button } from "reactstrap";
 import { baseurl } from "../../helpers/url";
 import EditFoodItem from "./Edit/EditFoodItem";
+import EditCalories from "./Edit/EditCalories"
+import EditQuantity from "./Edit/EditQuantity"
+import EditUnit from "./Edit/EditUnit"
 import DisplayFoodItem from "./display/DisplayFoodItem";
+import DisplayCalories from "./display/DisplayCalories";
+import DisplayQuantity from "./display/DisplayQuantity";
+import DisplayTotal from "./display/DisplayTotal";
+import DisplayUnit from "./display/DisplayUnit";
+
 
 // import { createRoutesFromElements } from "react-router-dom";
 
@@ -125,20 +133,53 @@ export default function FoodList(props) {
         }
 
         let foodDisplay;
+        let caloriesDisplay;
         let quantityDisplay;
         let unitDisplay;
-        let calorieDisplay;
+        let totalDisplay;
 
-        //! ----------------------------------------------- Food Item Display & Edit -------------------------------------------
 
-        if (foodID === foodItemEditCheck ) { 
-          foodDisplay = <EditFoodItem
+        // --------------------------------------- Food Display Item ----------------------------------------------------
+        if (foodID === foodItemEditCheck ) { foodDisplay = <EditFoodItem
           information = {props.information}
         />
-
-        } else if (foodID !== foodItemEditCheck)
+        } else if (foodID != foodItemEditCheck)
         {
+          <tr className="tableItems tableContainer" key={props.foodData.indexOf(props.item)}>
           foodDisplay = <DisplayFoodItem
+          editFoodNames = {editFoodNames}
+          // editQuantity = {editQuantity}
+          // editUnit = {editUnit}
+          // editCalories = {editCalories}
+          foodID = {foodID}
+          // quantityID = {quantityID}
+          // unitID = {unitID}
+          // caloriesID = {caloriesID}
+          // foodData = {foodData}
+          item = {item}
+          foodName = {foodName}
+          // quantity = {quantity}
+          // unit = {unit}
+          // calories = {calories}
+          // totalCalories = {totalCalories}
+          setFoodItemEditCheck = {setFoodItemEditCheck} 
+          />
+          </tr>
+          // console.log("no match","foodID", foodID, "foodItemEditCheck", foodItemEditCheck)
+        }
+
+        return (
+          foodDisplay
+        );
+
+        // ---------------------------------------- Calorie Display ------------------------------------------------------
+        if (caloriesID === calorieEditCheck ) { caloriesDisplay = <EditCalories
+          information = {props.information}
+        />
+        } else if (caloriesID != calorieEditCheck)
+        {
+          <tr className="tableItems tableContainer" key={props.foodData.indexOf(props.item)}>
+          display = <DisplayFoodItem
           editFoodNames = {editFoodNames}
           editQuantity = {editQuantity}
           editUnit = {editUnit}
@@ -156,6 +197,105 @@ export default function FoodList(props) {
           totalCalories = {totalCalories}
           setFoodItemEditCheck = {setFoodItemEditCheck} 
           />
+          </tr>
+          console.log("no match","foodID", foodID, "foodItemEditCheck", foodItemEditCheck)
+        }
+
+        return (
+          display
+        );
+
+        // ---------------------------------------- Quantity Display -----------------------------------------------------
+        if (foodID === foodItemEditCheck ) { foodDisplay = <EditFoodItem
+          information = {props.information}
+        />
+        } else if (foodID != foodItemEditCheck)
+        {
+          <tr className="tableItems tableContainer" key={props.foodData.indexOf(props.item)}>
+          quantityDisplay = <DisplayQuantity
+          editFoodNames = {editFoodNames}
+          editQuantity = {editQuantity}
+          editUnit = {editUnit}
+          editCalories = {editCalories}
+          foodID = {foodID}
+          quantityID = {quantityID}
+          unitID = {unitID}
+          caloriesID = {caloriesID}
+          foodData = {foodData}
+          item = {item}
+          foodName = {foodName}
+          quantity = {quantity}
+          unit = {unit}
+          calories = {calories}
+          totalCalories = {totalCalories}
+          setFoodItemEditCheck = {setFoodItemEditCheck} 
+          />
+          </tr>
+          console.log("no match","foodID", foodID, "foodItemEditCheck", foodItemEditCheck)
+        }
+
+        return (
+          quantityDisplay
+        );
+        // ------------------------------------------ Unit Display -------------------------------------------------------
+        if (unitID === unitEditCheck ) { unitDisplay = <EditUnit
+          information = {props.information}
+        />
+        } else if (unitID != unitEditCheck)
+        {
+          <tr className="tableItems tableContainer" key={props.foodData.indexOf(props.item)}>
+          display = <DisplayUnit
+          editFoodNames = {editFoodNames}
+          editQuantity = {editQuantity}
+          editUnit = {editUnit}
+          editCalories = {editCalories}
+          foodID = {foodID}
+          quantityID = {quantityID}
+          unitID = {unitID}
+          caloriesID = {caloriesID}
+          foodData = {foodData}
+          item = {item}
+          foodName = {foodName}
+          quantity = {quantity}
+          unit = {unit}
+          calories = {calories}
+          totalCalories = {totalCalories}
+          setFoodItemEditCheck = {setFoodItemEditCheck} 
+          />
+          </tr>
+        }
+
+        return (
+          unitDisplay
+        );
+        // ------------------------------------------ Total Display ------------------------------------------------------        
+        if (foodID === foodItemEditCheck ) { foodDisplay = <EditFoodItem
+          information = {props.information}
+        />
+        } else if (foodID != foodItemEditCheck)
+        {
+          <tr className="tableItems tableContainer" key={props.foodData.indexOf(props.item)}>
+          display = <DisplayFoodItem
+
+          editFoodNames = {editFoodNames}
+          editQuantity = {editQuantity}
+          editUnit = {editUnit}
+          editCalories = {editCalories}
+          foodID = {foodID}
+          quantityID = {quantityID}
+          unitID = {unitID}
+          caloriesID = {caloriesID}
+          foodData = {foodData}
+          item = {item}
+          foodName = {foodName}
+          quantity = {quantity}
+          unit = {unit}
+          calories = {calories}
+          totalCalories = {totalCalories}
+          setFoodItemEditCheck = {setFoodItemEditCheck} 
+          />
+          </tr>
+          console.log("no match","foodID", foodID, "foodItemEditCheck", foodItemEditCheck)
         }
 
         return (
@@ -262,6 +402,37 @@ export default function FoodList(props) {
 
         return (
           calorieDisplay
+        );
+        // ---------------------------------------- Calorie Display ------------------------------------------------------
+        if (caloriesID === calorieEditCheck ) { caloriesDisplay = <EditCalories
+          information = {props.information}
+        />
+        } else if (caloriesID != calorieEditCheck)
+        {
+          <tr className="tableItems tableContainer" key={props.foodData.indexOf(props.item)}>
+          display = <DisplayFoodItem
+          editFoodNames = {editFoodNames}
+          editQuantity = {editQuantity}
+          editUnit = {editUnit}
+          editCalories = {editCalories}
+          foodID = {foodID}
+          quantityID = {quantityID}
+          unitID = {unitID}
+          caloriesID = {caloriesID}
+          foodData = {foodData}
+          item = {item}
+          foodName = {foodName}
+          quantity = {quantity}
+          unit = {unit}
+          calories = {calories}
+          totalCalories = {totalCalories}
+          setFoodItemEditCheck = {setFoodItemEditCheck} 
+          />
+          </tr>
+        }
+
+        return (
+          caloriesDisplay
         );
       }
     });

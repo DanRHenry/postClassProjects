@@ -2,7 +2,7 @@
 import { React, useRef } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 import { baseurl } from "../../../helpers/url";
-export default function DisplayUnit(props) {
+export default function DisplayTotal(props) {
 // const setFoodEdit = () => {
 //   props.setFoodItemEditCheck(props.foodID);
 // }
@@ -10,9 +10,9 @@ export default function DisplayUnit(props) {
 //   props.setQuantityEditCheck(props.quantityID);
 // }
 
-const setUnitEdit = () => {
-  props.setUnitEditCheck(props.unitID);
-}
+// const setUnitEdit = () => {
+//   props.setUnitEditCheck(props.unitID);
+// }
 
 // const setCalorieEdit = () => {
 //   props.setCalorieEditCheck(props.caloriesID);
@@ -20,8 +20,7 @@ const setUnitEdit = () => {
 
   return (
     <>
-            <td className="tableItems tableItemUnit" id={props.unitID} onClick={setUnitEdit}>{props.unit}</td>
-
+            <td className="tableItems tableTotalCalories">{props.totalCalories}</td>
     </>
   );
 }
