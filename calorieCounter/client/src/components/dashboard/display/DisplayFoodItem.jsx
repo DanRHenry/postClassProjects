@@ -3,14 +3,16 @@ import { React, useRef } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 import { baseurl } from "../../../helpers/url";
 export default function DisplayFoodItem(props) {
-  
-const setUnitEdit = () => {
-  props.setUnitEditCheck(props.unitID);
+  console.log("props:",props)
+const setFoodEdit = () => {
+  console.log("props:",props)
+  props.setFoodEditCheck(props.foodID);
 }
 
   return (
     <>
-            <td className="tableItems tableItemUnit" id={props.unitID} onClick={setUnitEdit}>{props.unit}</td>
+    <td>DisplayFoodItem</td>
+            <td className="tableItems tableItemUnit" id={props.foodID} onClick={setFoodEdit}>{props.food}</td>
     </>
   );
 }

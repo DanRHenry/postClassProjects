@@ -20,6 +20,7 @@ const setUnitEdit = () => {
 
   return (
     <>
+    <td>DisplayUnit</td>
             <td className="tableItems tableItemUnit" id={props.unitID} onClick={setUnitEdit}>{props.unit}</td>
 
     </>

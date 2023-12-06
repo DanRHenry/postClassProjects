@@ -11,6 +11,7 @@ const setQuantityEdit = () => {
 }
   return (
     <>
+    <td>DisplayQuantity</td>
             <td className="tableItems tableItemQuantity" id={props.quantityID} onClick={setQuantityEdit}>{props.quantity}</td>
 
     </>

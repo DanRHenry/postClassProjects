@@ -20,6 +20,7 @@ export default function DisplayTotal(props) {
 
   return (
     <>
+    <td>DisplayTotal</td>
             <td className="tableItems tableTotalCalories">{props.totalCalories}</td>
     </>
   );
