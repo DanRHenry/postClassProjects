@@ -15,6 +15,7 @@ import DisplayQuantity from "./display/DisplayQuantity";
 import DisplayTotal from "./display/DisplayTotal";
 import DisplayUnit from "./display/DisplayUnit";
 
+
 // import { createRoutesFromElements } from "react-router-dom";
 
 // import { useParams, useNavigate } from "react-router-dom";
@@ -275,6 +276,7 @@ export default function FoodList(props) {
         {
           <tr className="tableItems tableContainer" key={props.foodData.indexOf(props.item)}>
           display = <DisplayFoodItem
+
           editFoodNames = {editFoodNames}
           editQuantity = {editQuantity}
           editUnit = {editUnit}
@@ -297,7 +299,109 @@ export default function FoodList(props) {
         }
 
         return (
-          display
+          foodDisplay
+        );
+
+        //! ------------------------------------------------ Quantity Display & Edit --------------------------------------------
+
+        if (quantityID === quantityEditCheck ) { 
+          quantityDisplay = <EditFoodItem
+        //   setFoodItemEditCheck = {setFoodItemEditCheck}
+          information = {props.information}
+        />
+
+        } else if (quantityID !== quantityEditCheck)
+        {
+          quantityDisplay = <DisplayFoodItem
+          editFoodNames = {editFoodNames}
+          editQuantity = {editQuantity}
+          editUnit = {editUnit}
+          editCalories = {editCalories}
+          foodID = {foodID}
+          quantityID = {quantityID}
+          unitID = {unitID}
+          caloriesID = {caloriesID}
+          foodData = {foodData}
+          item = {item}
+          foodName = {foodName}
+          quantity = {quantity}
+          unit = {unit}
+          calories = {calories}
+          totalCalories = {totalCalories}
+          setQuantityEditCheck = {setQuantityEditCheck} 
+          />
+        }
+
+        return (
+          quantityDisplay
+        );
+
+        //! --------------------------------------------------- Unit Display & Edit ---------------------------------------------
+
+        if (unitID === unitEditCheck ) { 
+          unitDisplay = <EditFoodItem
+        //   setFoodItemEditCheck = {setFoodItemEditCheck}
+          information = {props.information}
+        />
+
+        } else if (unitID !== unitEditCheck)
+        {
+          quantityDisplay = <DisplayFoodItem
+          editFoodNames = {editFoodNames}
+          editQuantity = {editQuantity}
+          editUnit = {editUnit}
+          editCalories = {editCalories}
+          foodID = {foodID}
+          quantityID = {quantityID}
+          unitID = {unitID}
+          caloriesID = {caloriesID}
+          foodData = {foodData}
+          item = {item}
+          foodName = {foodName}
+          quantity = {quantity}
+          unit = {unit}
+          calories = {calories}
+          totalCalories = {totalCalories}
+          setUnitEditCheck = {setUnitEditCheck} 
+          />
+        }
+
+        return (
+          quantityDisplay
+        );
+
+        //! ------------------------------------------------- Calorie Display & Edit --------------------------------------------
+
+        if (caloriesID === calorieEditCheck ) { 
+          calorieDisplay = <EditFoodItem
+        //   setFoodItemEditCheck = {setFoodItemEditCheck}
+          information = {props.information}
+        />
+
+        } else if (caloriesID !== calorieEditCheck)
+        {
+          calorieDisplay = <DisplayFoodItem
+          editFoodNames = {editFoodNames}
+          editQuantity = {editQuantity}
+          editUnit = {editUnit}
+          editCalories = {editCalories}
+          foodID = {foodID}
+          quantityID = {quantityID}
+          unitID = {unitID}
+          caloriesID = {caloriesID}
+          foodData = {foodData}
+          item = {item}
+          foodName = {foodName}
+          quantity = {quantity}
+          unit = {unit}
+          calories = {calories}
+          totalCalories = {totalCalories}
+          setCalorieEditCheck = {setCalorieEditCheck} 
+          />
+        }
+
+        return (
+          calorieDisplay
         );
         // ---------------------------------------- Calorie Display ------------------------------------------------------
         if (caloriesID === calorieEditCheck ) { caloriesDisplay = <EditCalories
