@@ -22,7 +22,7 @@ const log = console.log;
 
 // ---------------------- Controllers: -------------------
 const user = require("./controllers/user.controller");
-const food = require("./controllers/food.controller");
+const questions = require("./controllers/questions.controller");
 
 // Adding cors() to handle the preflight request for us (something Postman did for us), this is part of our server middleware required and called in the app.js
 const cors = require("cors");
@@ -100,7 +100,7 @@ app.options("*", (req, res) => {
 
 
 app.use("/api/user", user);
-app.use("/api/food", food);
+app.use("/api/questions", questions);
 // app.use("/user", user);
 // app.use("/food", food);
 app.listen(PORT, () => log(`CalorieCounter Server on Port: ${PORT}`));
