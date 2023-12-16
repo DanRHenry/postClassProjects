@@ -33,7 +33,7 @@ const mongoose = require("mongoose");
 // Create a variable for our connection address variable from the .env
 const MONGO = process.env.MONGODB;
 
-mongoose.connect(`${MONGO}/calorieCounter`);
+mongoose.connect(`${MONGO}/jeopardy`);
 // console.log(MONGO,"has connected")
 // Create a variable that is an event listener to check if connected.
 const db = mongoose.connection;
@@ -103,4 +103,4 @@ app.use("/api/user", user);
 app.use("/api/questions", questions);
 // app.use("/user", user);
 // app.use("/food", food);
-app.listen(PORT, () => log(`CalorieCounter Server on Port: ${PORT}`));
+app.listen(PORT, () => log(`jeopardyServer Server on Port: ${PORT}`));
