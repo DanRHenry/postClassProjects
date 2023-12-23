@@ -14,6 +14,8 @@
 
 require("dotenv").config();
 const express = require("express");
+// https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms
+const { body, validationResult } = require("express-validator");
 const app = express();
 // Points to our environment file and puts the value of PORT from that variable into this PORT variable.
 const PORT = process.env.PORT;
