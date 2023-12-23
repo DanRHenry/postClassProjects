@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 const QuestionsSchema = new mongoose.Schema({
-    date: {
-        type: String,
-        required: true
-    },
-    creatorName: {
-        type: String,
-        required: true
-    }, 
+    // date: {
+    //     type: String,
+    //     required: true
+    // },
+    // creatorName: {
+    //     type: String,
+    //     required: true
+    // }, 
     question: {
         type: String,
         required: true
@@ -17,18 +17,18 @@ const QuestionsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    category: {
-        type: String,
-        required: true
-    },
-    points: {
-        type: Number,
-        required: true
-    },
-    round: {
-        type: String,
-        required: true
-    }
+    // category: {
+    //     type: String,
+    //     required: true
+    // },
+    // points: {
+    //     type: Number,
+    //     required: true
+    // },
+    // round: {
+    //     type: String,
+    //     required: true
+    // }
 });
 
 module.exports = mongoose.model("Questions", QuestionsSchema);

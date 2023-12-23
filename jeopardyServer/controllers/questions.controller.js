@@ -12,6 +12,7 @@ const serverError = (res, error) => {
 
 router.post("/storeQuestion", async (req, res) => {
   try {
+    console.log("req:",req)
     // Creating a new object based off the Model Schema.
     const question = new Question({
       date: req.body.date,
