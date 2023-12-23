@@ -99,8 +99,8 @@ app.options("*", (req, res) => {
 // });
 
 
-app.use("/api/user", user);
-app.use("/api/questions", questions);
+app.use("/jeopardyApi/user", user);
+app.use("/jeopardyApi/questions", questions);
 // app.use("/user", user);
 // app.use("/food", food);
 app.listen(PORT, () => log(`jeopardyServer Server on Port: ${PORT}`));
