@@ -26,13 +26,13 @@ router.post("/storeQuestion", async (req, res) => {
   try {
     // Creating a new object based off the Model Schema.
     const question = new Question({
-      date: req.body.date,
-      creatorName: req.body.creatorName,
+      // date: req.body.date,
+      // creatorName: req.body.creatorName,
       question: req.body.question,
       answer: req.body.answer,
-      category: req.body.category,
-      points: req.body.points,
-      round: req.body.round,
+      // category: req.body.category,
+      // points: req.body.points,
+      // round: req.body.round,
     }); // using values from req.body to form our object.
 
     const newQuestion = await question.save(); // Writes to database. Returns a response - why it should be an "await".
