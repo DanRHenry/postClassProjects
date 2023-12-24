@@ -45,7 +45,7 @@ router.post("/storeQuestion", async (req, res) => {
     }
     res.status(200).json({
       question: newQuestion,
-      message: `Success! Question Saved!:${req}`,
+      message: `Success! Question Saved!:${req.body}`,
     });
   } catch (err) {
     res.status(500).json({
