@@ -10,21 +10,21 @@ const serverError = (res, error) => {
 
 // ------------------------ POST ----------------------
 
-router.post("/question", async (req, res) => {
-  try {
-    console.log("req:",req.body)
+// router.post("/question", async (req, res) => {
+//   try {
+//     console.log("req:",req.body)
 
-  }
-  catch (err) {
-    res.status(500).json({
-      ERROR: err.message,
-    });
-  }
-})
+//   }
+//   catch (err) {
+//     res.status(500).json({
+//       ERROR: err.message,
+//     });
+//   }
+// })
 
 router.post("/storeQuestion", async (req, res) => {
   try {
-
+    console.log("req.body:",req.body)
     // Creating a new object based off the Model Schema.
     const question = new Question({
       // date: req.body.date,
@@ -36,11 +36,7 @@ router.post("/storeQuestion", async (req, res) => {
       // round: req.body.round,
     }); // using values from req.body to form our object.
 
-    const newQuestion = await question.save(); // Writes to database. Returns a response - why it should be an "await".
-
-    // Create a token using the sign method of jwt, (payload, message, exp)
-    // The payload should be the user ID, and secret message should eventually be in the .env
-    //   const token = jwt.sign({ id: user._id }, SECRET, { expiresIn: "1 day" });
+    const newQuestion = await question.save();
     if (newQuestion) {
       console.log("newQuestion:", newQuestion);
     }
