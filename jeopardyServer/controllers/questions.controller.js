@@ -12,7 +12,7 @@ const serverError = (res, error) => {
 
 router.post("/question", async (req, res) => {
   try {
-    console.log("req:",req)
+    console.log("req:",req.body)
 
   }
   catch (err) {
