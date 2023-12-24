@@ -33,7 +33,8 @@ const mongoose = require("mongoose");
 // Create a variable for our connection address variable from the .env
 const MONGO = process.env.MONGODB;
 
-mongoose.connect(`${MONGO}`);
+mongoose.connect(`${MONGO}/jeopardy`, {useNewUrlParser: true}, { useUnifiedTopology: true});
+// mongoose.connect(`${MONGO}/jeopardy{useNewUrlParser: true}, { useUnifiedTopology: true}`);
 // console.log(MONGO,"has connected")
 // Create a variable that is an event listener to check if connected.
 const db = mongoose.connection;
