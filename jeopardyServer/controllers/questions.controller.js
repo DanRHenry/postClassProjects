@@ -10,17 +10,17 @@ const serverError = (res, error) => {
 
 // ------------------------ POST ----------------------
 
-router.post("/question", async (req, res) => {
-  try {
-    console.log("req:",req.body)
+// router.post("/question", async (req, res) => {
+//   try {
+//     console.log("req:",req.body)
 
-  }
-  catch (err) {
-    res.status(500).json({
-      ERROR: err.message,
-    });
-  }
-})
+//   }
+//   catch (err) {
+//     res.status(500).json({
+//       ERROR: err.message,
+//     });
+//   }
+// })
 
 router.post("/storeQuestion", async (req, res) => {
   try {
