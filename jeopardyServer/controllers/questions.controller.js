@@ -24,7 +24,6 @@ const serverError = (res, error) => {
 
 router.post("/storeQuestion", async (req, res) => {
   try {
-    console.log("req.body:",req.body)
     // Creating a new object based off the Model Schema.
     const question = new Question({
       // date: req.body.date,
@@ -39,6 +38,7 @@ router.post("/storeQuestion", async (req, res) => {
     const newQuestion = await question.save();
     if (newQuestion) {
       console.log("newQuestion:", newQuestion);
+      res.redirect('/');
     }
     res.status(200).json({
       question: newQuestion,
