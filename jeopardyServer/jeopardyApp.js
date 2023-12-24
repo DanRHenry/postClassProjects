@@ -15,11 +15,9 @@
 require("dotenv").config();
 const express = require("express");
 // https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms
-const { body, validationResult } = require("express-validator");
 const app = express();
-// Points to our environment file and puts the value of PORT from that variable into this PORT variable.
 const PORT = process.env.PORT;
-const log = console.log;
+const bodyParser = require("body-parser");
 // Console log check for port/server running
 
 // ---------------------- Controllers: -------------------
@@ -35,19 +33,21 @@ const mongoose = require("mongoose");
 // Create a variable for our connection address variable from the .env
 const MONGO = process.env.MONGODB;
 
-mongoose.connect(`${MONGO}/jeopardy`);
+mongoose.connect(`${MONGO}`);
 // console.log(MONGO,"has connected")
 // Create a variable that is an event listener to check if connected.
 const db = mongoose.connection;
 
 // Use the above variable to trigger event listener to check connection
-db.once("open", () => log(`Connected: ${MONGO}`));
+db.once("open", () => console.log(`Connected: ${MONGO}`));
 
 // Added to allow us to accept JSON data from the body of our client.
 app.use(express.json());
 
 // Allowing the app to use cors
 app.use(cors());
+
+app.use(bodyParser.urlencoded({extended: true}));
 // app.use(cors({
 //     // origin: "*",
 //     origin: "https://danhenrydev.com",
@@ -74,9 +74,7 @@ app.use((req, res, next) => {
   
     next();
   });
-// !
-//???????????????????????????????????
-// !
+
 app.options("*", (req, res) => {
     console.log("preflight");
     if (
@@ -91,21 +89,8 @@ app.options("*", (req, res) => {
       console.log("fail");
     }
     })
-//!
-
-// app.use(express.static(path.join(__dirname, 'build')));
-
-//-app.get('/', function (req, res) {
-//+app.get('/*', function (req, res) {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
-
 
 app.use("/jeopardyApi/user", user);
 app.use("/jeopardyApi/questions", questions);
-// app.use("jeopardy/question", questions);
-// app.use("jeopardy/answer", questions);
 
-// app.use("/user", user);
-// app.use("/food", food);
-app.listen(PORT, () => log(`jeopardyServer Server on Port: ${PORT}`));
+app.listen(PORT, () => console.log(`The jeopardyServer is running on Port: ${PORT}`));
