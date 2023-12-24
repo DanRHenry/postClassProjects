@@ -11,11 +11,11 @@ const QuestionsSchema = new mongoose.Schema({
     // }, 
     question: {
         type: String,
-        required: true
+        required: false
     },
     answer: {
         type: String,
-        required: true
+        required: false
     },
     // category: {
     //     type: String,
