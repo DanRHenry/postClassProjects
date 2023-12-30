@@ -10,27 +10,15 @@ const serverError = (res, error) => {
 
 // ------------------------ POST ----------------------
 
-// router.post("/question", async (req, res) => {
-//   try {
-//     console.log("req:",req.body)
-
-//   }
-//   catch (err) {
-//     res.status(500).json({
-//       ERROR: err.message,
-//     });
-//   }
-// })
-
 router.post("/storeQuestion", async (req, res) => {
   try {
     // Creating a new object based off the Model Schema.
     const question = new Question({
       // date: req.body.date,
-      // creatorName: req.body.creatorName,
+      className: req.body.className,
       question: req.body.question,
       answer: req.body.answer,
-      // category: req.body.category,
+      category: req.body.category,
       // points: req.body.points,
       // round: req.body.round,
     }); // using values from req.body to form our object.
@@ -38,7 +26,7 @@ router.post("/storeQuestion", async (req, res) => {
     const newQuestion = await question.save();
     if (newQuestion) {
       console.log("newQuestion:", newQuestion);
-      res.redirect('/');
+      // res.redirect('/');
     }
     res.status(200).json({
       question: newQuestion,
