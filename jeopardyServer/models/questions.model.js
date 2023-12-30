@@ -5,24 +5,24 @@ const QuestionsSchema = new mongoose.Schema({
     //     type: String,
     //     required: true
     // },
-    // creatorName: {
-    //     type: String,
-    //     required: true
-    // }, 
+    className: {
+        type: String,
+        required: true
+    }, 
     question: {
         type: String,
         content: String,
-        required: false
+        required: true
     },
     answer: {
         type: String,
         content: String,
-        required: false
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
     }
-    // category: {
-    //     type: String,
-    //     required: true
-    // },
     // points: {
     //     type: Number,
     //     required: true
