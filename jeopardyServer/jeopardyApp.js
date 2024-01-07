@@ -23,6 +23,7 @@ const bodyParser = require("body-parser");
 // ---------------------- Controllers: -------------------
 const user = require("./controllers/user.controller");
 const questions = require("./controllers/questions.controller");
+const gameplay = require("./controllers/gameplay.controller")
 
 // Adding cors() to handle the preflight request for us (something Postman did for us), this is part of our server middleware required and called in the app.js
 const cors = require("cors");
@@ -93,5 +94,6 @@ app.options("*", (req, res) => {
 
 app.use("/jeopardyApi/user", user);
 app.use("/jeopardyApi/questions", questions);
+app.use("/jeopardyApi/gameplay", gameplay);
 
 app.listen(PORT, () => console.log(`The jeopardyServer is running on Port: ${PORT}`));

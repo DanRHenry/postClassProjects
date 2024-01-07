@@ -12,5 +12,9 @@ const GameplaySchema = new mongoose.Schema({
     category: {
         type: String,
         required: true
+    },
+    gameName: {
+        type: String,
+        required: true
     }
 })
