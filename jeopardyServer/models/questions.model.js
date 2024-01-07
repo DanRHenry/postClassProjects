@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
 const QuestionsSchema = new mongoose.Schema({
-    // date: {
-    //     type: String,
-    //     required: true
-    // },
     className: {
         type: String,
         required: true
@@ -22,15 +18,11 @@ const QuestionsSchema = new mongoose.Schema({
     category: {
         type: String,
         required: true
+    },
+    unit: {
+        type: String,
+        required: true
     }
-    // points: {
-    //     type: Number,
-    //     required: true
-    // },
-    // round: {
-    //     type: String,
-    //     required: true
-    // }
 });
 
 module.exports = mongoose.model("Questions", QuestionsSchema);
