@@ -19,6 +19,7 @@ router.post("/storeQuestion", async (req, res) => {
       question: req.body.question,
       answer: req.body.answer,
       category: req.body.category,
+      unit: req.body.unit,
       // points: req.body.points,
       // round: req.body.round,
     }); // using values from req.body to form our object.
