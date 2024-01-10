@@ -13,10 +13,12 @@ const serverError = (res, error) => {
 router.post("/gameplayInformation", async (req, res) => {
     try{
         const gameplayInfo = new GameplayInformation({
-            question: req.body.question,
-            answer: req.body.answer,
-            category: req.body.category,
             gameName: req.body.gameName,
+            gameCategories: req.body.gameCategories,
+            scores: req.body.scores,
+            players: req.body.players,
+            round: req.body.round,
+            date: req.body.date,
         })
 
         const newGameplayInfo = await gameplayInfo.save();
