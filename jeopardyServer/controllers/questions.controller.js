@@ -78,4 +78,31 @@ router.get("/find/:id", async (req, res) => {
     }
   });
 
+// ------------------------ Delete by ID -------------------
+
+router.get("/delete/:id", async (req, res) => {
+  console.log("req",req)
+  try {
+    const { id } = req.params._id;
+    console.log("id:",id)
+  //   const userID = { _id: id };
+  //   console.log("_id:", userID);
+  //   const returnOption = { new: true };
+
+  //   //* Remove user profile
+  //   const deleteUser = await User.deleteOne(userID);
+
+  //   deleteUser.deletedCount === 1
+  //     ? res.status(200).json({
+  //         message: `User account was successfully deleted!`,
+  //         // message: `User account ${userName} was successfully deleted!`,
+  //       })
+  //     : res.status(404).json({
+  //         message: `User data unable to be deleted.`,
+  //       });
+  } catch (err) {
+    console.log("oops");
+    serverError(res, err);
+  }
+})
 module.exports = router;
