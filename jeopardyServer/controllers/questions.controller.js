@@ -77,5 +77,35 @@ router.get("/find/:id", async (req, res) => {
       serverError(res, err);
     }
   });
+/* 
+----------------------------- Delete Account Endpoint ------------------------
+*/
+router.delete("/delete", requireValidation, async (req, res) => {
+  // res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  // console.log("deleting...");
+  try {
+    //* Pull the category's info from the req
+    const id = req.params;
+
+    const categoryID = { _id: id };
+
+    // const returnOption = { new: true };
+
+    //* Remove user profile
+    const deleteCategory = await Question.deleteOne(categoryID);
+
+    deleteCategory.deletedCount === 1
+      ? res.status(200).json({
+          message: `The category was successfully deleted!`,
+        })
+      : res.status(404).json({
+          message: `The category was unable to be deleted.`,
+        });
+  } catch (err) {
+    console.log("oops");
+    serverError(res, err);
+  }
+});
 
 module.exports = router;
