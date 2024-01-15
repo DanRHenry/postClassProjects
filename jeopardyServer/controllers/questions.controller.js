@@ -78,7 +78,7 @@ router.get("/find/:id", async (req, res) => {
     }
   });
 /* 
------------------------------ Delete Account Endpoint ------------------------
+----------------------------- Delete Category Endpoint ------------------------
 */
 router.delete("/delete", requireValidation, async (req, res) => {
   // res.header("Access-Control-Allow-Origin", "*");
