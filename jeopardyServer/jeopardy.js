@@ -16,7 +16,8 @@ require("dotenv").config();
 const express = require("express");
 // https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 4200;
+//const PORT = 4200;
 const bodyParser = require("body-parser");
 // Console log check for port/server running
 
@@ -92,8 +93,8 @@ app.options("*", (req, res) => {
     }
     })
 
-app.use("/jeopardyApi/user", user);
-app.use("/jeopardyApi/questions", questions);
-app.use("/jeopardyApi/gameplay", gameplay);
+app.use("/api/jeopardy/user", user);
+app.use("/api/jeopardy/questions", questions);
+app.use("/api/jeopardy/gameplay", gameplay);
 
 app.listen(PORT, () => console.log(`The jeopardyServer is running on Port: ${PORT}`));

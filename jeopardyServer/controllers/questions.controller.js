@@ -11,6 +11,7 @@ const serverError = (res, error) => {
 // ------------------------ POST ----------------------
 
 router.post("/storeQuestion", async (req, res) => {
+console.log("herererere");
   try {
     // Creating a new object based off the Model Schema.
     const question = new Question({
@@ -80,7 +81,8 @@ router.get("/find/:id", async (req, res) => {
 /* 
 ----------------------------- Delete Category Endpoint ------------------------
 */
-router.delete("/delete", requireValidation, async (req, res) => {
+// router.delete("/delete", requireValidation, async (req, res) => {
+router.delete("/delete", async (req, res) => {
   // res.header("Access-Control-Allow-Origin", "*");
   // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   // console.log("deleting...");
