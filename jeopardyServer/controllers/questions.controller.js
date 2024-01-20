@@ -81,14 +81,13 @@ router.get("/find/:id", async (req, res) => {
 /* 
 ----------------------------- Delete Category Endpoint ------------------------
 */
-// router.delete("/delete", requireValidation, async (req, res) => {
-router.delete("/delete", async (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
   // res.header("Access-Control-Allow-Origin", "*");
   // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   // console.log("deleting...");
   try {
     //* Pull the category's info from the req
-    const id = req.params;
+    const {id} = req.params;
 
     const categoryID = { _id: id };
 
