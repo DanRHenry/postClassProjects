@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const GameplayInformation = require ("../models/gameplay.model")
+const GameplayInformation = require ("../models/gameplay.model");
 
 const serverError = (res, error) => {
     console.log("Server-side error");
@@ -10,7 +10,7 @@ const serverError = (res, error) => {
 
 // -------------------------- Post -------------------------
 
-router.post("/gameplayInformation", async (req, res) => {
+router.post("/gameplayinformation", async (req, res) => {
     try{
         const gameplayInfo = new GameplayInformation({
             question: req.body.question,
