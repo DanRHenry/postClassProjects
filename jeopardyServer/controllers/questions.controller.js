@@ -11,30 +11,25 @@ const serverError = (res, error) => {
 // ------------------------ POST ----------------------
 
 router.post("/storeQuestion", async (req, res) => {
-console.log("herererere");
   try {
-    // Creating a new object based off the Model Schema.
-    const question = new Question({
-      // date: req.body.date,
+    const questionInfo = new Question({
       className: req.body.className,
       question: req.body.question,
       answer: req.body.answer,
       category: req.body.category,
       unit: req.body.unit,
-      // points: req.body.points,
-      // round: req.body.round,
     }); // using values from req.body to form our object.
 
-    const newQuestion = await question.save();
-    if (newQuestion) {
-      console.log("newQuestion:", newQuestion);
-      // res.redirect('/');
+    const newQuestionInfo = await questionInfo.save();
+    if (newQuestionInfo) {
+      console.log("newQuestion:", newQuestionInfo);
     }
     res.status(200).json({
-      question: newQuestion,
+      questionInfo: newQuestionInfo,
       message: `Success! Question Saved!:${req.body}`,
     });
   } catch (err) {
+    console.log(Question)
     res.status(500).json({
       ERROR: err.message,
     });

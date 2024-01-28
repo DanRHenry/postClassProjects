@@ -3,26 +3,24 @@ const mongoose = require("mongoose");
 const QuestionsSchema = new mongoose.Schema({
     className: {
         type: String,
-        required: true
+        required: true,
     }, 
     question: {
-        type: String,
-        content: String,
-        required: true
+        type: Object,
+        required: true,
     },
     answer: {
-        type: String,
-        content: String,
-        required: true
+        type: Object,
+        required: true,
     },
     category: {
-        type: String,
-        required: true
+        type: Object,
+        required: true,
     },
     unit: {
-        type: String,
-        required: true
-    }
+        type: Object,
+        required: true,
+    },
 });
 
 module.exports = mongoose.model("Questions", QuestionsSchema);

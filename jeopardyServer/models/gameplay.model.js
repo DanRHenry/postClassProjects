@@ -2,20 +2,24 @@ const mongoose = require("mongoose");
 
 const GameplaySchema = new mongoose.Schema({
     question: {
-        type: String,
+        type: Object,
         required: true
     },
     answer: {
-        type: String,
+        type: Object,
         required: true
     },
     category: {
-        type: String,
+        type: Object,
         required: true
     },
     gameName: {
         type: String,
         required: true
+    },
+    userName: {
+        type: String,
+        required: false
     }
 })
 
