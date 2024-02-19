@@ -18,6 +18,7 @@ router.post("/gameplayinformation", async (req, res) => {
             category: req.body.category,
             gameName: req.body.gameName,
             userName: req.body.userName,
+	    className: req.body.className,
         })
 
         const newGameplayInfo = await gameplayInfo.save();

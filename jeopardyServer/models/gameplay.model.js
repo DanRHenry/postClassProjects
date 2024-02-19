@@ -20,6 +20,10 @@ const GameplaySchema = new mongoose.Schema({
     userName: {
         type: String,
         required: false
+    },
+    className: {
+        type: String,
+        required: true
     }
 })
 
